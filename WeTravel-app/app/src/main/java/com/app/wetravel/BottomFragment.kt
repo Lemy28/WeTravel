@@ -21,7 +21,7 @@ class BottomFragment :Fragment(){
         _binding = BottomFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.button.setOnClickListener(){
-            replaceFragment(HomeFragment())
+            replaceFragment(ContentFragment())
         }
         binding.button2.setOnClickListener(){
             replaceFragment(WishListFragment())
