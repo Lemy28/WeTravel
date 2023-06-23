@@ -2,13 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<<<<<<< HEAD
+
     <color name="transparent">#00FFFFFF</color>
 
 =======
 
 
-    <color name="frogoColorPrimary">#6200EE</color>
+    <color name="frogoColorPrimary">#8BC34A</color>
     <color name="frogoColorPrimaryDark">#3700B3</color>
     <color name="frogoColorAccent">#03DAC5</color>
     <!--  Frogo Base Color -->

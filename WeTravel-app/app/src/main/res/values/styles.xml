@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--
- * Created by 
- * FrogoBox Inc License
- * =========================================
- * 
- * Copyright (C) .      
- * All rights reserved
- * 
- * Name     : Muhammad Faisal Amir
- * E-mail   : faisalamircs@gmail.com
- * Github   : github.com/amirisback
- * LinkedIn : linkedin.com/in/faisalamircs
- * 
- * FrogoBox Software Industries
- * 
- -->
-
 <resources>
+
+    <!-- styles.xml -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/frogoColorPrimary</item>
+        <item name="colorPrimaryDark">@color/frogoColorPrimaryDark</item>
+        <item name="colorAccent">@color/frogoColorAccent</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/frogoColorPrimary</item>
+        <item name="titleTextColor">@android:color/white</item>
+        <item name="subtitleTextColor">@android:color/white</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+
 
     <!-- Util -->
 
