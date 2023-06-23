@@ -22,15 +22,23 @@ class BottomFragment :Fragment(){
         val view = binding.root
         binding.button.setOnClickListener(){
             replaceFragment(HomeFragment())
+            binding.button.setImageResource(R.drawable.home_selected)
+            binding.button2.setImageResource(R.drawable.wishlist);
+            binding.button3.setImageResource(R.drawable.person);
         }
         binding.button2.setOnClickListener(){
             replaceFragment(WishListFragment())
+            binding.button2.setImageResource(R.drawable.wishlist_selected)
+            binding.button.setImageResource(R.drawable.home)
+            binding.button3.setImageResource(R.drawable.person)
         }
         binding.button3.setOnClickListener(){
             replaceFragment(PersonalFragment())
+            binding.button3.setImageResource(R.drawable.person_selected)
+            binding.button.setImageResource(R.drawable.home)
+            binding.button2.setImageResource(R.drawable.wishlist)
         }
         return view
-
     }
     private fun replaceFragment(fragment:Fragment){
         val fragmentManager=activity?.supportFragmentManager!!

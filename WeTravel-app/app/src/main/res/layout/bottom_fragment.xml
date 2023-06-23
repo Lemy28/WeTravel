@@ -1,7 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/rectangle">
     <LinearLayout
         android:id="@+id/id_tab_weixin"
         android:layout_width="wrap_content"
@@ -9,17 +10,17 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
+
         <ImageButton
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:layout_weight="1"
-            android:src="@drawable/home"
+            android:background="@color/transparent"
             android:cropToPadding="true"
+            android:paddingTop="25dp"
             android:scaleType="fitCenter"
-
-            />
+            android:src="@drawable/home" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/id_tab_address"
@@ -28,17 +29,18 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
+
         <ImageButton
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:text="Button"
-            android:src="@drawable/wishlist"
             android:layout_weight="1"
+            android:paddingTop="25dp"
+            android:background="@color/transparent"
             android:cropToPadding="true"
             android:scaleType="fitCenter"
-            />
+            android:src="@drawable/wishlist"
+            android:text="Button" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/id_tab_me"
@@ -51,7 +53,8 @@
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:paddingTop="25dp"
+            android:background="@color/transparent"
             android:src="@drawable/person"
             android:text="Button"
             android:layout_weight="1"
