@@ -21,10 +21,14 @@ class BottomFragment :Fragment(){
         _binding = BottomFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.button.setOnClickListener(){
+<<<<<<< HEAD
             replaceFragment(HomeFragment())
             binding.button.setImageResource(R.drawable.home_selected)
             binding.button2.setImageResource(R.drawable.wishlist);
             binding.button3.setImageResource(R.drawable.person);
+=======
+            replaceFragment(ContentFragment())
+>>>>>>> f800f8a74067f5fe3205d62cbceef8d3422b0baa
         }
         binding.button2.setOnClickListener(){
             replaceFragment(WishListFragment())
