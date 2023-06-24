@@ -1,18 +1,17 @@
+package com.app.wetravel
+
+import android.content.Intent
 import android.os.AsyncTask
 import android.util.Log
-import okhttp3.FormBody
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
-import okhttp3.Response
+import androidx.core.content.ContextCompat.startActivity
+import okhttp3.*
 
 class OkHttpTest(private val username: String, private val password: String) : AsyncTask<Void, Void, String>() {
     companion object {
         private const val TAG = "Net"
         private const val SERVER_URL = "http://192.168.40.28:8014/userLogin" // 服务器URL
     }
-
-    override fun doInBackground(vararg params: Void): String? {
+    override fun doInBackground(vararg voids: Void): String? {
         val client = OkHttpClient()
 
         // 创建表单请求体
@@ -27,18 +26,17 @@ class OkHttpTest(private val username: String, private val password: String) : A
             .post(requestBody)
             .build()
 
-        return try {
+        try {
             // 发送请求
             val response: Response = client.newCall(request).execute()
             if (response.isSuccessful) {
-                response.body?.string()
-            } else {
-                null
+                return response.body?.string()
             }
         } catch (e: Exception) {
-            Log.e(TAG, "Error executing server request: ${e.message}")
-            null
+            Log.e(TAG, "Error executing server request: " + e.message)
         }
+
+        return null
     }
 
     override fun onPostExecute(result: String?) {
@@ -56,3 +54,4 @@ class OkHttpTest(private val username: String, private val password: String) : A
         }
     }
 }
+

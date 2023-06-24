@@ -1,7 +1,9 @@
 package com.app.wetravel
 
-
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +25,12 @@ class LoginFragment: Fragment(){
         }
         binding.textView10.setOnClickListener(){
             replaceFragment(RegisterFragment())
+        }
+        binding.button4.setOnClickListener() {
+            val username = binding.editTextTextUsername.text.toString()
+            val password = binding.editTextTextPassword.text.toString()
+            val okHttpTest = OkHttpTest(username, password)
+            okHttpTest.execute()
         }
         return view
     }

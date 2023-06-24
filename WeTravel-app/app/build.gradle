@@ -12,7 +12,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.app.text"
+        applicationId "com.app.wetravel"
         minSdk 24
         targetSdk 33
         versionCode 1

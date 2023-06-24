@@ -1,11 +1,7 @@
 package com.app.wetravel
-
-import OkHttpTest
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.app.wetravel.databinding.ActivityMainBinding
-import com.app.wetravel.databinding.BottomFragmentBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -14,7 +10,4 @@ class MainActivity : AppCompatActivity() {
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
-    val Okhttp =OkHttpTest(13220324,123)
-
-
 }
