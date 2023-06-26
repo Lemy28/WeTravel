@@ -1,10 +1,14 @@
 package com.app.wetravel
 
 import android.os.Bundle
+import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -15,6 +19,7 @@ import com.google.gson.reflect.TypeToken
 import com.squareup.picasso.Picasso
 import okhttp3.Call
 import okhttp3.Callback
+import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -23,6 +28,49 @@ import okio.IOException
 
 
 class HomeFragment: Fragment() {
+
+
+    fun performSearch(keyword: String) {
+        val client = OkHttpClient()
+
+        val url = HttpUrl.Builder()
+            .scheme("http")
+            .host("192.168.3.111")
+            .port(8014)
+            .addPathSegment("selectAccommodationByKey")
+            .addQueryParameter("Key", keyword)
+            .build()
+
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                // 处理请求失败情况
+                e.printStackTrace()
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val json = response.body?.string()
+
+                    val houses = parseJson(json)
+                    Log.d("JsonParse", houses.toString())
+
+                    requireActivity().runOnUiThread {
+                        val frogoRv = view?.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
+                        frogoRv?.adapter = HouseAdapter(houses)
+                    }
+                } else {
+                    // 处理请求失败情况
+                    throw IOException("Unexpected code $response")
+                }
+            }
+        })
+    }
+
+
 
     class HouseAdapter(private val houses: List<House>) : RecyclerView.Adapter<HouseAdapter.HouseViewHolder>() {
 
@@ -120,9 +168,42 @@ class HomeFragment: Fragment() {
 
 
 
-
+    private var searchHandler = Handler()
+    private var searchRunnable: Runnable? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val searchEditText = view.findViewById<EditText>(R.id.searchEditText)
+        searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 在文本变化之前执行的操作（可忽略）
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // 当文本发生变化时执行的操作
+                val searchText = s.toString()
+
+                // 移除之前的搜索任务（如果存在）
+                searchRunnable?.let { searchHandler.removeCallbacks(it) }
+
+                // 创建一个新的搜索任务
+                searchRunnable = Runnable {
+                    // 在这里处理搜索栏输入的文本，例如执行搜索操作
+                    performSearch(searchText)
+                }
+                val runnable = searchRunnable
+
+                // 延迟执行搜索任务
+                if (runnable != null) {
+                    searchHandler.postDelayed(runnable, 500L)
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 在文本变化之后执行的操作（可忽略）
+            }
+        })
+
 
         listOfHouses { houses ->
             requireActivity().runOnUiThread {
