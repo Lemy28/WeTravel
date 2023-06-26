@@ -49,10 +49,10 @@ class WishListFragment:Fragment() {
             .addCallback(object : IFrogoViewAdapter<House> {
                 override fun setupInitComponent(view: View, data: House, position: Int, notifyListener: FrogoRecyclerNotifyListener<House>) {
                     // 在这里绑定数据和视图
-                    view.findViewById<TextView>(R.id.tv_wish_name).text = data.name // 设置民宿名称
-                    view.findViewById<TextView>(R.id.tv_wish_address).text = data.address // 设置民宿地址
+                    view.findViewById<TextView>(R.id.tv_wish_name).text = data.roomName // 设置民宿名称
+                    view.findViewById<TextView>(R.id.tv_wish_address).text = data.location // 设置民宿地址
 //                    view.findViewById<TextView>(R.id.tv_wish_address).text = "$${data.price}" // 设置民宿价格
-                    Picasso.get().load(data.image).into(view.findViewById<ImageView>(R.id.iv_wish_image))// 加载民宿图片
+                    Picasso.get().load(data.imageUrl).into(view.findViewById<ImageView>(R.id.iv_wish_image))// 加载民宿图片
                 }
 
                 override fun onItemClicked(
@@ -62,7 +62,7 @@ class WishListFragment:Fragment() {
                     notifyListener: FrogoRecyclerNotifyListener<House>
                 ) {
                     // 在这里处理点击事件，你可以使用view或data或position或notifyListener参数
-                    Toast.makeText(context, "You clicked on ${data.name}", Toast.LENGTH_SHORT).show() //显示一个提示信息
+                    Toast.makeText(context, "You clicked on ${data.roomName}", Toast.LENGTH_SHORT).show() //显示一个提示信息
                 }
 
                 override fun onItemLongClicked(
@@ -72,7 +72,7 @@ class WishListFragment:Fragment() {
                     notifyListener: FrogoRecyclerNotifyListener<House>
                 ) {
                     // 在这里处理长按事件，你可以使用view或data或position或notifyListener参数
-                    Toast.makeText(context, "You long clicked on ${data.name}", Toast.LENGTH_SHORT).show() // 显示一个提示信息
+                    Toast.makeText(context, "You long clicked on ${data.roomName}", Toast.LENGTH_SHORT).show() // 显示一个提示信息
                 }
             })
             .createLayoutGrid(2)
