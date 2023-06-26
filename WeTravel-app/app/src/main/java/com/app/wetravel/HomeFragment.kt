@@ -7,13 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.app.wetravel.models.House
-import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.recycler.core.IFrogoViewAdapter
 import com.google.gson.Gson
-import com.google.gson.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.squareup.picasso.Picasso
 import okhttp3.Call
@@ -23,7 +20,45 @@ import okhttp3.Request
 import okhttp3.Response
 import okio.IOException
 
+
+
 class HomeFragment: Fragment() {
+
+    class HouseAdapter(private val houses: List<House>) : RecyclerView.Adapter<HouseAdapter.HouseViewHolder>() {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HouseViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.frogo_rv_grid_type_2, parent, false)
+            return HouseViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: HouseViewHolder, position: Int) {
+            val house = houses[position]
+            holder.bind(house)
+        }
+
+        override fun getItemCount(): Int {
+            return houses.size
+        }
+
+        inner class HouseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            private val houseNameTextView: TextView = itemView.findViewById(R.id.tv_house_name)
+            private val houseAddressTextView: TextView = itemView.findViewById(R.id.tv_house_address)
+            private val housePriceTextView: TextView = itemView.findViewById(R.id.tv_house_price)
+            private val houseImageView: ImageView = itemView.findViewById(R.id.iv_house_image)
+
+            fun bind(house: House) {
+                houseNameTextView.text = house.roomName
+                houseAddressTextView.text = house.location
+                housePriceTextView.text = "$${house.price}"
+
+                val prefix = "http://39.107.60.28:8014"
+
+                Picasso.get().load(prefix + house.imageUrl).into(houseImageView)
+            }
+        }
+    }
+
+
 
     fun listOfHouses(callback: (List<House>) -> Unit) {
         // 创建一个OkHttpClient实例
@@ -84,40 +119,18 @@ class HomeFragment: Fragment() {
     }
 
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         listOfHouses { houses ->
             requireActivity().runOnUiThread {
                 val frogoRv = view.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
-                // 设置数据源、布局、回调等参数
-                frogoRv.injector<House>()
-                    .addData(houses) // 这里使用回调函数传入的houses列表
-                    .addCustomView(R.layout.frogo_rv_grid_type_2) // 这里是一个自定义的布局文件，用于显示每个House对象的信息，你需要自己创建或修改
-                    .addEmptyView(null)
-                    .addCallback(object : IFrogoViewAdapter<House> {
-                        override fun setupInitComponent(view: View, data: House, position: Int, notifyListener: FrogoRecyclerNotifyListener<House>) {
-                            // 在这里绑定数据和视图
-                            Log.d("House", "The name of the house is ${data.roomName}")
+                frogoRv.adapter = HouseAdapter(houses)
 
-                            view.findViewById<TextView>(R.id.tv_house_name).text = data.roomName // 设置民宿名称
-                            view.findViewById<TextView>(R.id.tv_house_address).text = data.location // 设置民宿地址
-                            view.findViewById<TextView>(R.id.tv_house_price).text = "$${data.price}" // 设置民宿价格
-                            Picasso.get().load(data.imageUrl).into(view.findViewById<ImageView>(R.id.iv_house_image))// 加载民宿图片
-                        }
-                        override fun onItemClicked(view: View, data: House, position: Int, notifyListener: FrogoRecyclerNotifyListener<House>) {
-                            // 在这里处理点击事件，或者留空
-                        }
-                        override fun onItemLongClicked(view: View, data: House, position: Int, notifyListener: FrogoRecyclerNotifyListener<House>) {
-                            // 在这里处理长按事件，或者留空
-                        }
-
-                    })
             }
         }
-
-
-
 
     }
 }
