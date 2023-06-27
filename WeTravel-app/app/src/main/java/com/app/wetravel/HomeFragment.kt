@@ -1,5 +1,6 @@
 package com.app.wetravel
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -24,7 +25,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import okio.IOException
-
 
 
 class HomeFragment: Fragment() {
@@ -102,6 +102,23 @@ class HomeFragment: Fragment() {
                 val prefix = "http://39.107.60.28:8014"
 
                 Picasso.get().load(prefix + house.imageUrl).into(houseImageView)
+
+                itemView.setOnClickListener {
+                    val position = adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        val clickedHouse = houses[position]
+
+                        // 创建一个 Intent，并将数据作为 extra 传递给新的 Activity
+                        val intent = Intent(itemView.context, HouseDetailActivity::class.java)
+                        intent.putExtra("HOUSE_DATA", Gson().toJson(clickedHouse))
+
+                        // 启动新的 Activity
+                        itemView.context.startActivity(intent)
+                    }
+                }
+
+
+
             }
         }
     }
