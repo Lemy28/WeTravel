@@ -35,7 +35,7 @@ class HomeFragment: Fragment() {
 
         val url = HttpUrl.Builder()
             .scheme("http")
-            .host("192.168.3.111")
+            .host("39.107.60.28")
             .port(8014)
             .addPathSegment("selectAccommodationByKey")
             .addQueryParameter("Key", keyword)
@@ -56,7 +56,6 @@ class HomeFragment: Fragment() {
                     val json = response.body?.string()
 
                     val houses = parseJson(json)
-                    Log.d("JsonParse", houses.toString())
 
                     requireActivity().runOnUiThread {
                         val frogoRv = view?.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
@@ -128,7 +127,6 @@ class HomeFragment: Fragment() {
     fun listOfHouses(callback: (List<House>) -> Unit) {
         // 创建一个OkHttpClient实例
         val client = OkHttpClient()
-        Log.d("JsonParse","ready to send request")
         // 创建一个请求对象
         val request = Request.Builder()
             .url("http://39.107.60.28:8014/selectAccommodation") // 这里是你的后台数据的URL
@@ -138,7 +136,6 @@ class HomeFragment: Fragment() {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 // 处理失败情况
-                Log.d("JsonParse","failed to get response")
 
                 e.printStackTrace()
             }
@@ -148,7 +145,6 @@ class HomeFragment: Fragment() {
                     val json = response.body?.string()
 
                     val houses = parseJson(json)
-                    Log.d("JsonParse",houses.toString())
 
                     callback(houses)
                 } else {
