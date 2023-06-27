@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 
 
+
 import android.util.Log
+
 
 
 import android.widget.Button
@@ -59,8 +61,10 @@ class HouseDetailActivity : AppCompatActivity() {
         val imageView = findViewById<ImageView>(R.id.imageView)
         val mapbutton = findViewById<Button>(R.id.locateButton)
 
+
         val saveButton = findViewById<Button>(R.id.saveButton)
         val payButton = findViewById<Button>(R.id.payButton)
+
 
         if (rentCountTextView != null) {
             rentCountTextView.text = rentCount.toString()
@@ -78,6 +82,7 @@ class HouseDetailActivity : AppCompatActivity() {
         Picasso.get()
             .load(prefix + clickedHouse.imageUrl)
             .into(imageView)
+
 
 
 
@@ -153,11 +158,13 @@ class HouseDetailActivity : AppCompatActivity() {
 
 
 
+
         mapbutton.setOnClickListener {
             val intent = Intent(this, MapActivity::class.java)
             intent.putExtra("key", clickedHouse.roomName.toString())
             startActivity(intent)
         }
+
 
 
 
@@ -214,6 +221,7 @@ class HouseDetailActivity : AppCompatActivity() {
                 })
             }
         }
+
 
     }
 

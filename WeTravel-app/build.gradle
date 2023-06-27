@@ -11,3 +11,9 @@ allprojects {
         jcenter() // 或者 mavenCentral()
     }
 }
+
+allprojects {
+    repositories {
+        jcenter() // 或者 mavenCentral()
+    }
+}
