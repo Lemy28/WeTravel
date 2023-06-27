@@ -2,17 +2,11 @@ package com.app.wetravel
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+
 import androidx.recyclerview.widget.RecyclerView
 import com.app.wetravel.models.House
 import com.google.gson.Gson
@@ -122,8 +116,6 @@ class HomeFragment: Fragment() {
         }
     }
 
-
-
     fun listOfHouses(callback: (List<House>) -> Unit) {
         // 创建一个OkHttpClient实例
         val client = OkHttpClient()
@@ -167,64 +159,12 @@ class HomeFragment: Fragment() {
     }
 
 
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-
-        setHasOptionsMenu(true)// tell the Fragment that it has menu items
-
-        return inflater.inflate(R.layout.home_content,container,false)
-    }
-
-
-
-    private var searchHandler = Handler()
-    private var searchRunnable: Runnable? = null
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val searchEditText = view.findViewById<EditText>(R.id.searchEditText)
-        searchEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // 在文本变化之前执行的操作（可忽略）
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // 当文本发生变化时执行的操作
-                val searchText = s.toString()
-
-                // 移除之前的搜索任务（如果存在）
-                searchRunnable?.let { searchHandler.removeCallbacks(it) }
-
-                // 创建一个新的搜索任务
-                searchRunnable = Runnable {
-                    // 在这里处理搜索栏输入的文本，例如执行搜索操作
-                    performSearch(searchText)
-                }
-                val runnable = searchRunnable
-
-                // 延迟执行搜索任务
-                if (runnable != null) {
-                    searchHandler.postDelayed(runnable, 500L)
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                // 在文本变化之后执行的操作（可忽略）
-            }
-        })
-
-
-        listOfHouses { houses ->
-            requireActivity().runOnUiThread {
-                val frogoRv = view.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
-                frogoRv.adapter = HouseAdapter(houses)
-
-            }
-        }
-
-    }
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+): View? {
+    return inflater.inflate(R.layout.home_fragment, container, false)
+}
 }

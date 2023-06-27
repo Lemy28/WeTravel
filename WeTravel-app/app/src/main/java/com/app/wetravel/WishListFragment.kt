@@ -3,10 +3,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+
 import com.app.wetravel.HouseDetailActivity
 import com.app.wetravel.R
 import com.app.wetravel.models.House
@@ -24,11 +22,13 @@ class WishListFragment : Fragment() {
 
 
 
+class WishListFragment: Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_recycler_list, container, false)
     }
 
@@ -145,5 +145,6 @@ class WishListFragment : Fragment() {
                 ?.createLayoutGrid(2)
                 ?.build()
         }
+
     }
 }

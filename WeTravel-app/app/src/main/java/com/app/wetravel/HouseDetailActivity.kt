@@ -1,8 +1,11 @@
 package com.app.wetravel
 
 
+import android.content.Intent
 import android.os.Bundle
+
 import android.util.Log
+
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -52,6 +55,7 @@ class HouseDetailActivity : AppCompatActivity() {
         val titleTextView = findViewById<TextView>(R.id.titleTextview) as? TextView
         val descriptionTextView = findViewById<TextView>(R.id.descriptionTextView) as? TextView
         val imageView = findViewById<ImageView>(R.id.imageView)
+        val mapbutton = findViewById<Button>(R.id.locateButton)
 
         val saveButton = findViewById<Button>(R.id.saveButton)
         val payButton = findViewById<Button>(R.id.payButton)
@@ -63,7 +67,7 @@ class HouseDetailActivity : AppCompatActivity() {
             priceTextView.text = clickedHouse.price.toString()+"/天"
         }
         if (titleTextView != null) {
-            titleTextView.text = clickedHouse.roomName.toString()
+            titleTextView.text = clickedHouse.roomName.toString()//名字
         }
         if (descriptionTextView != null) {
             descriptionTextView.text = clickedHouse.location.toString()
@@ -72,6 +76,7 @@ class HouseDetailActivity : AppCompatActivity() {
         Picasso.get()
             .load(prefix + clickedHouse.imageUrl)
             .into(imageView)
+
 
         findViewById<Button>(R.id.increaseButton).setOnClickListener {
             rentCount++
@@ -141,6 +146,16 @@ class HouseDetailActivity : AppCompatActivity() {
 
 
         }
+
+
+
+        mapbutton.setOnClickListener {
+            val intent = Intent(this, MapActivity::class.java)
+            intent.putExtra("key", clickedHouse.roomName.toString())
+            startActivity(intent)
+        }
+
+
 
     }
 
