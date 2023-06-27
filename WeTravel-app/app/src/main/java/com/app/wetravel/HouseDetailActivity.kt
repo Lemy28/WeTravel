@@ -4,7 +4,9 @@ package com.app.wetravel
 import android.content.Intent
 import android.os.Bundle
 
+
 import android.util.Log
+
 
 import android.widget.Button
 import android.widget.ImageView
@@ -78,6 +80,7 @@ class HouseDetailActivity : AppCompatActivity() {
             .into(imageView)
 
 
+
         findViewById<Button>(R.id.increaseButton).setOnClickListener {
             rentCount++
             rentCountTextView.text = rentCount.toString()
@@ -146,6 +149,7 @@ class HouseDetailActivity : AppCompatActivity() {
 
 
         }
+
 
 
 

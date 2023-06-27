@@ -11,4 +11,3 @@ allprojects {
         jcenter() // 或者 mavenCentral()
     }
 }
-
