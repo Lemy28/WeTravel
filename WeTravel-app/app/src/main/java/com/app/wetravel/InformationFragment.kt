@@ -1,31 +1,28 @@
-package com.app.wetravel
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.app.wetravel.databinding.SignupBinding
+import com.app.wetravel.R
+import com.app.wetravel.databinding.LoginBinding
+import com.app.wetravel.databinding.PersonalinfomationBinding
 
-
-class RegisterFragment:Fragment() {
-    private var _binding: SignupBinding?=null
+class InformationFragment: Fragment() {
+    private var _binding: PersonalinfomationBinding?=null
     private val binding get()=_binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding= SignupBinding.inflate(inflater,container,false)
+        _binding= PersonalinfomationBinding.inflate(inflater,container,false)
         val view = binding.root
-        binding.imageButton9.setOnClickListener(){
+        binding.imageButton16.setOnClickListener(){
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
-        binding.textView10.setOnClickListener(){
-            requireActivity().onBackPressedDispatcher.onBackPressed()
+        binding.textView22.setOnClickListener(){
+            replaceFragment(InformationEditFragment())
         }
-
         return view
     }
     private fun replaceFragment(fragment:Fragment){
@@ -35,4 +32,5 @@ class RegisterFragment:Fragment() {
         transaction.addToBackStack(null)
         transaction.commit()
     }
+
 }

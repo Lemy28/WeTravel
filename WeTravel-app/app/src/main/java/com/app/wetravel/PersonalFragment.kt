@@ -1,5 +1,6 @@
 package com.app.wetravel
 
+import InformationFragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,7 @@ class PersonalFragment:Fragment() {
         binding.imageButton2.setOnClickListener(){
             replaceFragment(SettingFrgment())
         }
+
         return view
     }
     private fun replaceFragment(fragment:Fragment){

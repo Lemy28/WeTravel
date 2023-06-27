@@ -20,6 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:id="@+id/imageButton10"
         android:layout_width="wrap_content"
@@ -211,4 +212,195 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/about" />
 
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:srcCompat="@drawable/rectangle_grey" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="22dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton10"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton10"
+        app:layout_constraintStart_toStartOf="@+id/imageButton10"
+        app:layout_constraintTop_toTopOf="@+id/imageButton10"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/imageButton11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/rectangle_long_grey" />
+
+    <ImageView
+        android:id="@+id/imageButton12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton11"
+        app:srcCompat="@drawable/rectangle_long_grey" />
+
+    <ImageView
+        android:id="@+id/imageButton13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton12"
+        app:srcCompat="@drawable/rectangle_long_grey" />
+
+    <ImageView
+        android:id="@+id/imageButton14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton15"
+        app:srcCompat="@drawable/rectangle_long_grey" />
+
+    <ImageView
+        android:id="@+id/imageButton15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton13"
+        app:srcCompat="@drawable/rectangle_long_grey" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="Change password"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton11"
+        app:layout_constraintStart_toStartOf="@+id/imageButton11"
+        app:layout_constraintTop_toTopOf="@+id/imageButton11"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="Currency"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton12"
+        app:layout_constraintStart_toStartOf="@+id/imageButton12"
+        app:layout_constraintTop_toTopOf="@+id/imageButton12"
+        app:layout_constraintVertical_bias="0.5"/>
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="Languages"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton13"
+        app:layout_constraintStart_toStartOf="@+id/imageButton13"
+        app:layout_constraintTop_toTopOf="@+id/imageButton13"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="About app"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton15"
+        app:layout_constraintStart_toStartOf="@+id/imageButton15"
+        app:layout_constraintTop_toTopOf="@+id/imageButton15"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="Log out"
+        android:textSize="19sp"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton14"
+        app:layout_constraintStart_toStartOf="@+id/imageButton14"
+        app:layout_constraintTop_toTopOf="@+id/imageButton14"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+        app:layout_constraintEnd_toStartOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/imageButton12"
+        app:layout_constraintTop_toTopOf="@+id/textView15"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/coin" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView17"
+        app:layout_constraintEnd_toStartOf="@+id/textView17"
+        app:layout_constraintStart_toStartOf="@+id/imageButton13"
+        app:layout_constraintTop_toTopOf="@+id/textView17"
+        app:srcCompat="@drawable/global" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
+        app:layout_constraintEnd_toStartOf="@+id/textView19"
+        app:layout_constraintStart_toStartOf="@+id/imageButton14"
+        app:layout_constraintTop_toTopOf="@+id/textView19"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logout" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView14"
+        app:layout_constraintEnd_toStartOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="@+id/imageButton11"
+        app:layout_constraintTop_toTopOf="@+id/textView14"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/padlock" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintStart_toStartOf="@+id/imageButton15"
+        app:layout_constraintTop_toTopOf="@+id/textView18"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/about" />
 </androidx.constraintlayout.widget.ConstraintLayout>
