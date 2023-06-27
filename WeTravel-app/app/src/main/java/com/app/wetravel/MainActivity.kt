@@ -1,12 +1,18 @@
 package com.app.wetravel
 import android.os.Bundle
-<<<<<<< HEAD
+
 import androidx.appcompat.app.AppCompatActivity
-=======
+
+import android.util.Log
+
 import android.widget.Button
 
->>>>>>> 8afc757561075c7c433a747e61f4e830fe957820
+
 import com.app.wetravel.databinding.ActivityMainBinding
+
+import com.app.wetravel.databinding.BottomFragmentBinding
+import com.ferfalk.simplesearchview.SimpleSearchView
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -15,11 +21,17 @@ class MainActivity : AppCompatActivity() {
 
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        // Other code ...
+
     }
-<<<<<<< HEAD
-=======
+
     //val Okhttp =OkHttpTest(13220324,123)
 
 
->>>>>>> 8afc757561075c7c433a747e61f4e830fe957820
 }
+
+    // Other methods ...
+}
+
