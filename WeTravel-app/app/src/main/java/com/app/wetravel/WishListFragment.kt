@@ -3,6 +3,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 import com.app.wetravel.HouseDetailActivity
@@ -16,7 +19,7 @@ import com.squareup.picasso.Picasso
 import okhttp3.*
 import java.io.IOException
 
-class WishListFragment : Fragment() {
+
 
     val userid = "22"
 
@@ -148,3 +151,4 @@ class WishListFragment: Fragment(){
 
     }
 }
+

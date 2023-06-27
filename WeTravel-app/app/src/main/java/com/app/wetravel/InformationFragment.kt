@@ -5,17 +5,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.app.wetravel.R
 import com.app.wetravel.databinding.LoginBinding
-import com.app.wetravel.databinding.PersonalinfomationBinding
+import com.app.wetravel.databinding.PersonalinformationBinding
 
 class InformationFragment: Fragment() {
-    private var _binding: PersonalinfomationBinding?=null
+    private var _binding: PersonalinformationBinding?=null
     private val binding get()=_binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding= PersonalinfomationBinding.inflate(inflater,container,false)
+        _binding= PersonalinformationBinding.inflate(inflater,container,false)
         val view = binding.root
         binding.imageButton16.setOnClickListener(){
             requireActivity().onBackPressedDispatcher.onBackPressed()

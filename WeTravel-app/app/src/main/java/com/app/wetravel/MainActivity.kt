@@ -10,22 +10,7 @@ import androidx.databinding.DataBindingUtil.*
 import androidx.fragment.app.Fragment
 
 import androidx.appcompat.app.AppCompatActivity
-
 import com.app.wetravel.databinding.ActivityMainBinding
-
-
-
-
-
-
-
-
-
-import com.app.wetravel.databinding.ActivityMainBinding
-
-import com.app.wetravel.databinding.BottomFragmentBinding
-import com.ferfalk.simplesearchview.SimpleSearchView
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,9 +25,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-        // Other code ...
-
     }
 
 
@@ -53,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(binding.content.id, fragment)
+            .replace(binding.contentfragment.id, fragment)
             .commit()
     }
 
