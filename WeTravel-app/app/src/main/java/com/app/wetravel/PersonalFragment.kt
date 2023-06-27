@@ -24,9 +24,7 @@ class PersonalFragment:Fragment() {
         binding.imageButton2.setOnClickListener(){
             replaceFragment(SettingFrgment())
         }
-        binding.imageButton5.setOnClickListener(){
-            replaceFragment(InformationFragment())
-        }
+
         return view
     }
     private fun replaceFragment(fragment:Fragment){

@@ -1,6 +1,7 @@
 package com.app.wetravel
 import android.os.Bundle
 
+
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
@@ -14,10 +15,24 @@ import com.app.wetravel.databinding.ActivityMainBinding
 
 
 
+
+
+
+
+
+
+import com.app.wetravel.databinding.ActivityMainBinding
+
+import com.app.wetravel.databinding.BottomFragmentBinding
+import com.ferfalk.simplesearchview.SimpleSearchView
+
+
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -25,8 +40,11 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
         // Other code ...
+
     }
+
 
     private fun loadHomeFragment() {
         val homeFragment = HomeFragment()
@@ -38,5 +56,6 @@ class MainActivity : AppCompatActivity() {
             .replace(binding.content.id, fragment)
             .commit()
     }
+
 }
 
