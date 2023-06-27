@@ -123,8 +123,6 @@ class HomeFragment: Fragment() {
         }
     }
 
-
-
     fun listOfHouses(callback: (List<House>) -> Unit) {
         // 创建一个OkHttpClient实例
         val client = OkHttpClient()
