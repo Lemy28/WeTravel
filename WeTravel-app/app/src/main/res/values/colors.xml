@@ -4,8 +4,11 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="transparent">#00FFFFFF</color>
+    <color name="red">#ff6f5b</color>
 
-=======
+
+    <color name="transparent">#00FFFFFF</color>
+
 
 
     <color name="frogoColorPrimary">#8BC34A</color>
@@ -31,5 +34,6 @@
     <color name="frogoColorDarkYellow">#FFC107</color>
     <color name="frogoColorAmber">#FF9800</color>
     <color name="frogoColorOrange">#FF5722</color>
->>>>>>> f800f8a74067f5fe3205d62cbceef8d3422b0baa
+
+
 </resources>

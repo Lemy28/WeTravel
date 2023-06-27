@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.app.wetravel.R
 import com.app.wetravel.databinding.BottomFragmentBinding
+
 
 
 class BottomFragment :Fragment(){

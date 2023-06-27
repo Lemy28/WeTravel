@@ -67,12 +67,12 @@
         android:id="@+id/imageButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
+
+        android:layout_marginStart="68dp"
         android:background="@color/transparent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton6"
-        app:layout_constraintHorizontal_bias="0.718"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButton6"
+
         app:srcCompat="@drawable/headphone" />
 
     <ImageView
@@ -91,7 +91,9 @@
         android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+
+        android:layout_marginTop="60dp"
+
         android:background="@color/transparent"
         app:layout_constraintEnd_toStartOf="@+id/imageButton8"
         app:layout_constraintHorizontal_bias="0.0"
@@ -103,7 +105,9 @@
         android:id="@+id/imageButton6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+
+        android:layout_marginTop="48dp"
+
         android:background="@color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -116,17 +120,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/transparent"
+
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toEndOf="@+id/imageButton6"
-        app:layout_constraintTop_toTopOf="@+id/imageButton6"
+
         app:srcCompat="@drawable/headphones3" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+
+        android:layout_marginStart="64dp"
+
         android:layout_marginTop="12dp"
         android:text="Evaluate"
         app:layout_constraintBottom_toTopOf="@+id/imageButton3"
@@ -157,26 +165,25 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="20dp"
+
+        android:layout_marginTop="12dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+
         app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="451dp"
+
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="12dp"
         android:text="Payment"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton8"
-        app:layout_constraintVertical_bias="0.285" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton8" />
+
+
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -185,6 +192,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:background="@color/transparent"
+
+        android:contentDescription="图像编辑按钮"
+
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
@@ -196,6 +206,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+
+        android:contentDescription="系统设置按钮"
+
         android:background="@color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/imageView5"
         app:layout_constraintEnd_toEndOf="parent"
@@ -219,12 +232,15 @@
         android:id="@+id/imageButton5"
         android:layout_width="43dp"
         android:layout_height="47dp"
+
+        android:contentDescription="跳转到个人信息详细页面按钮"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
-        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintHorizontal_bias="0.784"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.463"
+        app:layout_constraintVertical_bias="0.512"
+
         app:srcCompat="@drawable/rectangle_right" />
 
     <ImageView
@@ -236,5 +252,30 @@
         app:layout_constraintStart_toStartOf="@+id/imageButton5"
         app:layout_constraintTop_toTopOf="@+id/imageButton5"
         app:srcCompat="@drawable/chevron_right" />
+
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="64dp"
+        android:text="Login/Register"
+        android:textColor="#496b5c"
+        android:onClick="onLoginOrRegister"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="174dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="4dp"
+        android:text="xxxxxxxxxxxxx@gmail"
+        android:textColor="#787a7a"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
