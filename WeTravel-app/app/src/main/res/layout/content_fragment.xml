@@ -8,7 +8,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="24sp"
-        android:text="This is Home"
+        android:text="This is Content"
         />
-
 </LinearLayout>
