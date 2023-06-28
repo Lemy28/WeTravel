@@ -58,8 +58,11 @@ class HomeFragment: Fragment() {
                     val houses = parseJson(json)
 
                     requireActivity().runOnUiThread {
-                        val frogoRv = view?.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
-                        frogoRv?.adapter = HouseAdapter(houses)
+                        if(isAdded) {
+                            val frogoRv =
+                                view?.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
+                            frogoRv?.adapter = HouseAdapter(houses)
+                        }
                     }
                 } else {
                     // 处理请求失败情况
@@ -68,7 +71,6 @@ class HomeFragment: Fragment() {
             }
         })
     }
-
 
 
     class HouseAdapter(private val houses: List<House>) : RecyclerView.Adapter<HouseAdapter.HouseViewHolder>() {
@@ -98,9 +100,8 @@ class HomeFragment: Fragment() {
                 houseAddressTextView.text = house.location
                 housePriceTextView.text = "$${house.price}"
 
-                val prefix = "http://39.107.60.28:8014"
 
-                Picasso.get().load(prefix + house.imageUrl).into(houseImageView)
+                Picasso.get().load(Configs.prefix + house.imageUrl).into(houseImageView)
 
                 itemView.setOnClickListener {
                     val position = adapterPosition
@@ -215,8 +216,10 @@ class HomeFragment: Fragment() {
 
         listOfHouses { houses ->
             requireActivity().runOnUiThread {
-                val frogoRv = view.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
-                frogoRv.adapter = HouseAdapter(houses)
+                if (isAdded) {
+                    val frogoRv = view?.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
+                    frogoRv?.adapter = HouseAdapter(houses)
+                }
 
             }
         }

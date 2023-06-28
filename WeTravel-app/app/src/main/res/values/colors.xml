@@ -10,7 +10,7 @@
 
 
     <color name="frogoColorPrimary">#8BC34A</color>
-    <color name="frogoColorPrimaryDark">#3700B3</color>
+    <color name="frogoColorPrimaryDark">#009688</color>
     <color name="frogoColorAccent">#03DAC5</color>
     <!--  Frogo Base Color -->
     <color name="frogoColorWhite">#FFFFFF</color>

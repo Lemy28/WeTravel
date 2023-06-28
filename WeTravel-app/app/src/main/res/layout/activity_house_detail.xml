@@ -37,12 +37,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="Description"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/priceTextview" />
 
@@ -60,11 +60,23 @@
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <Button
-        android:id="@+id/locateButton"
+    <TextView
+        android:id="@+id/bottomTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
+        android:text="底部文本"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+
+
+    <Button
+        android:id="@+id/locateButton"
+        style="@style/MyButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="284dp"
         android:text="定位"
         app:layout_constraintEnd_toStartOf="@+id/saveButton"
         app:layout_constraintHorizontal_bias="0.5"
@@ -76,10 +88,51 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="收藏"
-        app:layout_constraintEnd_toStartOf="@+id/payButton"
+        app:layout_constraintEnd_toStartOf="@+id/rentLayout"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/locateButton"
-        app:layout_constraintTop_toTopOf="@+id/locateButton" />
+        app:layout_constraintTop_toTopOf="@+id/locateButton"
+        style="@style/MyButtonStyle"  />
+
+    <LinearLayout
+        android:id="@+id/rentLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/payButton"
+        app:layout_constraintEnd_toEndOf="@+id/payButton"
+        app:layout_constraintStart_toStartOf="@+id/payButton">
+
+        <Button
+            android:id="@+id/decreaseButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:text="-"
+            style="@style/MyButtonStyle" />
+
+        <TextView
+            android:id="@+id/rentCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="18sp"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/increaseButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="+"
+            style="@style/MyButtonStyle"  />
+    </LinearLayout>
+
+
+
+
+
+
+
 
     <Button
         android:id="@+id/payButton"
@@ -89,44 +142,11 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/saveButton"
-        app:layout_constraintTop_toTopOf="@+id/locateButton" />
+        app:layout_constraintTop_toTopOf="@+id/locateButton"
+        style="@style/MyButtonStyle"  />
 
 
-    <LinearLayout
-        android:id="@+id/rentContainer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
-        android:orientation="horizontal"
-        android:gravity=""
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView">
 
-        <Button
-            android:id="@+id/decreaseButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:onClick="decreaseRentCount"
-            android:text="-" />
-
-        <TextView
-            android:id="@+id/rentCountTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="1"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/increaseButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:onClick="increaseRentCount"
-            android:text="+" />
-
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
