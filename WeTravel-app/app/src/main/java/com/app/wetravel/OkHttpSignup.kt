@@ -5,11 +5,10 @@ import android.util.Log
 import okhttp3.*
 
 
-class OkHttpSignup(private val username: String, private val password: String,private val confiredmpassword:String) : AsyncTask<Void, Void, String>() {
+class OkHttpSignup(private val username: String, private val password: String) : AsyncTask<Void, Void, String>() {
     companion object {
 
         private const val TAG = "Net"
-        private const val SERVER_URL = "http://192.168.40.28:8014/resign" // 服务器URL 注册api接口
     }
     interface OkHttpCallback {
         fun onSuccess(result: String)
@@ -26,11 +25,10 @@ class OkHttpSignup(private val username: String, private val password: String,pr
         val requestBody: RequestBody = FormBody.Builder()
             .add("username", username)
             .add("password", password)
-            .add("confirmedpassword",confiredmpassword)
             .build()
         // 创建请求对象
         val request: Request = Request.Builder()
-            .url(SERVER_URL)
+            .url(Configs.prefix+"addUser")
             .post(requestBody)
             .build()
 

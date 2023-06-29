@@ -16,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.app.wetravel.models.House
+import com.app.wetravel.models.HouseConfig
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +36,8 @@ import okio.IOException
 class HouseDetailActivity : AppCompatActivity() {
 
     private var rentCount = 1 // 初始租赁天数为1
-
+    private val client = OkHttpClient()
+    private val userId = "22"
 
 
 
@@ -60,6 +62,7 @@ class HouseDetailActivity : AppCompatActivity() {
         val descriptionTextView = findViewById<TextView>(R.id.descriptionTextView) as? TextView
         val imageView = findViewById<ImageView>(R.id.imageView)
         val mapbutton = findViewById<Button>(R.id.locateButton)
+        val bottomTextView = findViewById<TextView>(R.id.bottomTextView)
 
 
         val saveButton = findViewById<Button>(R.id.saveButton)
@@ -73,14 +76,26 @@ class HouseDetailActivity : AppCompatActivity() {
             priceTextView.text = clickedHouse.price.toString()+"/天"
         }
         if (titleTextView != null) {
-            titleTextView.text = clickedHouse.roomName.toString()//名字
+            titleTextView.text = clickedHouse.roomName
         }
         if (descriptionTextView != null) {
-            descriptionTextView.text = clickedHouse.location.toString()
+            descriptionTextView.text = clickedHouse.location
         }
-        val prefix = "http://39.107.60.28:8014"
+
+        if(bottomTextView != null){
+            getDetail(clickedHouse.roomId) { houseConfig ->
+                if (houseConfig != null) {
+                    runOnUiThread {
+                        bottomTextView.text = houseConfig.toString()
+                    }
+                } else {
+                    bottomTextView.text = "Unknow"
+                }
+            }
+
+        }
         Picasso.get()
-            .load(prefix + clickedHouse.imageUrl)
+            .load(Configs.prefix + clickedHouse.imageUrl)
             .into(imageView)
 
 
@@ -103,7 +118,6 @@ class HouseDetailActivity : AppCompatActivity() {
         saveButton.setOnClickListener {
             GlobalScope.launch(Dispatchers.IO) {
                 // 在后台线程中执行网络请求
-                val userId = "22"
                 val roomId = clickedHouse.roomId
                 val url = "http://39.107.60.28:8014/addCollection?userId=$userId&roomId=$roomId"
 
@@ -112,7 +126,6 @@ class HouseDetailActivity : AppCompatActivity() {
                         .url(url)
                         .build()
 
-                    val client = OkHttpClient()
                     val response = client.newCall(request).execute()
 
                     withContext(Dispatchers.Main) {
@@ -138,14 +151,8 @@ class HouseDetailActivity : AppCompatActivity() {
         }
 
         payButton.setOnClickListener {
-            val totalPrice = clickedHouse.price * rentCount
             // 在这里处理租订按钮的逻辑，例如跳转到支付页面，传递总价格等
             // 使用 totalPrice 来获取计算后的房租金额
-                // 在这里处理租订按钮的逻辑，例如跳转到支付页面，传递总价格等
-                // 使用 totalPrice 来获取计算后的房租金额
-
-
-                val userId = "22"
                 val roomId = clickedHouse.roomId
 
                 // 执行网络请求或调用后台API提交数据
@@ -169,6 +176,62 @@ class HouseDetailActivity : AppCompatActivity() {
 
 
     }
+    private fun getDetail(roomId: String, callback: (HouseConfig?) -> Unit) {
+        val urlBuilder = (Configs.prefix + "selectConfiguration").toHttpUrlOrNull()?.newBuilder()
+        urlBuilder?.addQueryParameter("roomId", roomId)
+
+        val url = urlBuilder?.build()
+
+        Log.d("urlDebug",url.toString())
+
+        val request = url?.let {
+            Request.Builder()
+                .url(it)
+                .build()
+        }
+
+
+
+        // 发起异步请求
+        if (request != null) {
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    // 请求失败，显示错误提示
+                    runOnUiThread {
+                        Toast.makeText(this@HouseDetailActivity, "请求房间信息失败", Toast.LENGTH_SHORT).show()
+                    }
+                    // 回调函数中返回 null
+                    callback(null)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    // 请求成功，根据响应结果显示相应提示
+                    val responseBody = response.body?.string()
+
+                    if (response.isSuccessful && responseBody != null) {
+                        // 请求成功并且后台返回了正确的响应
+                        val gson = Gson()
+                        val houseConfig = gson.fromJson(responseBody, HouseConfig::class.java)
+
+                        callback(houseConfig)
+                    } else {
+                        // 请求成功但后台返回了错误的响应
+                        runOnUiThread {
+                            Toast.makeText(this@HouseDetailActivity, "网络故障", Toast.LENGTH_SHORT).show()
+                        }
+                        // 回调函数中返回 null
+                        callback(null)
+                    }
+                }
+            })
+        } else {
+            // URL 构建错误，回调函数中返回 null
+            callback(null)
+        }
+    }
+
+
+
 
     private fun submitBillToBackend(userId: String, roomId: String,rentCount: String,housePrice:String) {
             // 构建请求的 URL
@@ -180,10 +243,6 @@ class HouseDetailActivity : AppCompatActivity() {
             urlBuilder?.addQueryParameter("totalPrice",totalPrice.toString())
             val url = urlBuilder?.build()
 
-            Log.d("urlDebug",url.toString())
-
-            // 创建 OkHttp 客户端
-            val client = OkHttpClient()
 
             // 创建请求对象
             val request = url?.let {
@@ -191,6 +250,9 @@ class HouseDetailActivity : AppCompatActivity() {
                     .url(it)
                     .build()
             }
+
+
+
 
             // 发起异步请求
             if (request != null) {
