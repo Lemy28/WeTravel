@@ -11,6 +11,7 @@ import android.util.Log
 
 
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -63,9 +64,10 @@ class HouseDetailActivity : AppCompatActivity() {
         val imageView = findViewById<ImageView>(R.id.imageView)
         val mapbutton = findViewById<Button>(R.id.locateButton)
         val bottomTextView = findViewById<TextView>(R.id.bottomTextView)
+        val collationbutton = findViewById<ImageView>(R.id.collectionButton)
 
 
-        val saveButton = findViewById<Button>(R.id.saveButton)
+
         val payButton = findViewById<Button>(R.id.payButton)
 
 
@@ -114,8 +116,9 @@ class HouseDetailActivity : AppCompatActivity() {
             }
         }
 
+
         // 添加按钮点击监听器
-        saveButton.setOnClickListener {
+        collationbutton.setOnClickListener {
             GlobalScope.launch(Dispatchers.IO) {
                 // 在后台线程中执行网络请求
                 val roomId = clickedHouse.roomId
@@ -163,17 +166,12 @@ class HouseDetailActivity : AppCompatActivity() {
         }
 
 
-
-
-
+        //地图
         mapbutton.setOnClickListener {
             val intent = Intent(this, MapActivity::class.java)
             intent.putExtra("key", clickedHouse.roomName.toString())
             startActivity(intent)
         }
-
-
-
 
     }
     private fun getDetail(roomId: String, callback: (HouseConfig?) -> Unit) {

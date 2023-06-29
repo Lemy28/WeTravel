@@ -17,7 +17,7 @@ class HouseConfig(
         }
     }
     override fun toString(): String {
-        return "'$detail' \n " +
-                "厨房：'$kitchen'\n 浴室：'$bathroom'\n 卧室='$bedroom'\n 家具='$parlour')"
+        return "$detail \n " +
+                "厨房:$kitchen\n 浴室:$bathroom\n 卧室:$bedroom\n 家具:$parlour"
     }
 }
