@@ -36,8 +36,8 @@ class HouseDetailActivity : AppCompatActivity() {
 
     private var rentCount = 1 // 初始租赁天数为1
     private val client = OkHttpClient()
-    private val userId = "22"
 
+    val userId = UserManager.getUser()?.userId
     private var selectedStartDate: String? = null
 
     @SuppressLint("MissingInflatedId")
@@ -51,7 +51,9 @@ class HouseDetailActivity : AppCompatActivity() {
         // 如果你将房屋数据转换为 Gson 格式的字符串传递过来，则可以使用 Gson 来解析数据
         val gson = Gson()
         val clickedHouse = gson.fromJson(houseDataString, House::class.java)
-        fetchData(userId,clickedHouse.roomId)
+        if (userId != null) {
+            fetchData(userId,clickedHouse.roomId)
+        }
 
 
         // 初始化视图组件
@@ -140,7 +142,11 @@ class HouseDetailActivity : AppCompatActivity() {
                     val response = client.newCall(request).execute()
 
                     withContext(Dispatchers.Main) {
-                        if (response.isSuccessful) {
+                        if(userId==null){
+                            Toast.makeText(this@HouseDetailActivity, "请先登录", Toast.LENGTH_SHORT).show()
+
+                        }
+                        else if (response.isSuccessful) {
                             // 收藏成功
                             // 在这里可以更新 UI 或执行其他逻辑操作
                             collationbutton.setImageResource(R.drawable.collectionbutton)
@@ -169,7 +175,9 @@ class HouseDetailActivity : AppCompatActivity() {
                 val roomId = clickedHouse.roomId
 
                 // 执行网络请求或调用后台API提交数据
+            if (userId != null) {
                 submitBillToBackend(userId, roomId, rentCount.toString(),clickedHouse.price.toString(),chosedata.text)
+            }
         }
 
         back.setOnClickListener{

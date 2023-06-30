@@ -1,8 +1,13 @@
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 import com.app.wetravel.HouseDetailActivity
@@ -17,7 +22,7 @@ import okhttp3.*
 import java.io.IOException
 
 
-    val userid = "22"
+
 
 class WishListFragment: Fragment(){
     override fun onCreateView(
@@ -31,10 +36,16 @@ class WishListFragment: Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val userid = UserManager.getUser()?.userId
+        if (userid != null) {
+            Log.d("1010", userid)
+        }
         if (userid == "unknown"){
             return
         }
-        fetchData(userid)
+        if (userid != null) {
+            fetchData(userid)
+        }
     }
 
     private fun fetchData(userid: String) {
@@ -47,7 +58,7 @@ class WishListFragment: Fragment(){
             .addPathSegment("selectAccommodationByCollection")
             .addQueryParameter("userId", userid)
             .build()
-
+        Log.d("102002", url.toString())
         val request = Request.Builder()
             .url(url)
             .build()

@@ -11,9 +11,12 @@ object UserManager {
         isLoggedIn = true
     }
 
-    fun logout() {
+    fun logout():User?{
         // 登出逻辑，将isLoggedIn属性设置为false
         isLoggedIn = false
+        val previousUser = user
+        user = null
+        return previousUser
     }
     fun getUser(): User? {
         return user

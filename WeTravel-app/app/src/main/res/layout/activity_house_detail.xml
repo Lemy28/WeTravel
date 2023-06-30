@@ -42,7 +42,7 @@
         android:layout_height="70dp"
         android:elevation="16dp"
         android:radius="40dp"
-        android:src="@drawable/collectionbutton"
+        android:src="@drawable/collectionbutton2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.907"

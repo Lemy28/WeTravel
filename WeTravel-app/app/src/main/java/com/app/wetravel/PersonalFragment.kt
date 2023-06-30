@@ -89,7 +89,6 @@ class PersonalFragment:Fragment() {
                         val type = object : TypeToken<User>() {}.type
                         val user = Gson().fromJson<User>(responseData, type)
                         UserManager.setUser(user)
-
                         binding.textView12.visibility=View.GONE
                         binding.textView21.text=user.username
                         binding.textView21.visibility=View.VISIBLE
