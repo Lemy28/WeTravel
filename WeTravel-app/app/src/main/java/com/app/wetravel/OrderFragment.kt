@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.app.wetravel.databinding.LoginBinding
+
 import com.app.wetravel.databinding.OrderBinding
-import com.app.wetravel.databinding.PersonalFragmentBinding
+
 
 class OrderFragment: Fragment() {
     private lateinit var recyclerView: RecyclerView

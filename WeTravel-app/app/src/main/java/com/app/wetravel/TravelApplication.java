@@ -7,13 +7,16 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.maps.MapsInitializer;
 import com.amap.api.services.core.ServiceSettings;
 
+import cn.jpush.android.api.JPushInterface;
 
-//应用注册，权限申请
 public class TravelApplication extends Application {
-
     @Override
     public void onCreate() {
         super.onCreate();
+        JPushInterface.setDebugMode(true);
+        // 初始化 JPush
+        JPushInterface.init(this);
+
 
         Context context = this;
         //定位隐私政策同意

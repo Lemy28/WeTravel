@@ -13,9 +13,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
-
-    
-
     <application
 
         android:name=".TravelApplication"
@@ -55,6 +52,7 @@
 
         <activity
             android:name=".MapActivity"
+            android:theme="@style/AppTheme.TransparentStatusBar"
             android:exported="false" />
 
         <!-- 定位service -->
@@ -75,14 +73,9 @@
         </activity>
         <activity
             android:name=".HouseDetailActivity"
+            android:theme="@style/AppTheme.TransparentStatusBar"
+
             android:exported="true">
-
-            <!-- 活动的 intent-filter -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

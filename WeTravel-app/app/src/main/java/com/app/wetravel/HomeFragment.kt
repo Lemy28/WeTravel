@@ -1,18 +1,20 @@
 package com.app.wetravel
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.wetravel.models.House
 import com.google.gson.Gson
@@ -35,7 +37,7 @@ class HomeFragment: Fragment() {
 
         val url = HttpUrl.Builder()
             .scheme("http")
-            .host("192.168.3.111")
+            .host("39.107.60.28")
             .port(8014)
             .addPathSegment("selectAccommodationByKey")
             .addQueryParameter("Key", keyword)
@@ -56,11 +58,13 @@ class HomeFragment: Fragment() {
                     val json = response.body?.string()
 
                     val houses = parseJson(json)
-                    Log.d("JsonParse", houses.toString())
 
                     requireActivity().runOnUiThread {
-                        val frogoRv = view?.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
-                        frogoRv?.adapter = HouseAdapter(houses)
+                        if(isAdded) {
+                            val frogoRv =
+                                view?.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
+                            frogoRv?.adapter = HouseAdapter(houses)
+                        }
                     }
                 } else {
                     // 处理请求失败情况
@@ -69,7 +73,6 @@ class HomeFragment: Fragment() {
             }
         })
     }
-
 
 
     class HouseAdapter(private val houses: List<House>) : RecyclerView.Adapter<HouseAdapter.HouseViewHolder>() {
@@ -97,11 +100,10 @@ class HomeFragment: Fragment() {
             fun bind(house: House) {
                 houseNameTextView.text = house.roomName
                 houseAddressTextView.text = house.location
-                housePriceTextView.text = "$${house.price}"
+                housePriceTextView.text = "${house.price}元"
 
-                val prefix = "http://39.107.60.28:8014"
 
-                Picasso.get().load(prefix + house.imageUrl).into(houseImageView)
+                Picasso.get().load(Configs.prefix + house.imageUrl).into(houseImageView)
 
                 itemView.setOnClickListener {
                     val position = adapterPosition
@@ -114,6 +116,8 @@ class HomeFragment: Fragment() {
 
                         // 启动新的 Activity
                         itemView.context.startActivity(intent)
+
+
                     }
                 }
 
@@ -126,7 +130,6 @@ class HomeFragment: Fragment() {
     fun listOfHouses(callback: (List<House>) -> Unit) {
         // 创建一个OkHttpClient实例
         val client = OkHttpClient()
-        Log.d("JsonParse","ready to send request")
         // 创建一个请求对象
         val request = Request.Builder()
             .url("http://39.107.60.28:8014/selectAccommodation") // 这里是你的后台数据的URL
@@ -136,7 +139,6 @@ class HomeFragment: Fragment() {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 // 处理失败情况
-                Log.d("JsonParse","failed to get response")
 
                 e.printStackTrace()
             }
@@ -146,7 +148,6 @@ class HomeFragment: Fragment() {
                     val json = response.body?.string()
 
                     val houses = parseJson(json)
-                    Log.d("JsonParse",houses.toString())
 
                     callback(houses)
                 } else {
@@ -169,24 +170,44 @@ class HomeFragment: Fragment() {
     }
 
 
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+): View? {
+    return inflater.inflate(R.layout.home_content, container, false)
 
-
-        setHasOptionsMenu(true)// tell the Fragment that it has menu items
-
-        return inflater.inflate(R.layout.home_content,container,false)
+}
+    private var selectedCity: String? = null
+    fun showCityPicker() {
+        val dialogFragment = CityPickerDialogFragment()
+        dialogFragment.setOnCitySelectedListener { city ->
+            selectedCity = city
+            updateButtonLabel()
+        }
+        val fragmentManager: FragmentManager = childFragmentManager
+        dialogFragment.show(fragmentManager, "CityPickerDialog")
     }
-
-
+    private fun updateButtonLabel() {
+        val btnShowPicker = view?.findViewById<Button>(R.id.city)
+        if (selectedCity != null) {
+            if (btnShowPicker != null) {
+                btnShowPicker.setText(selectedCity)
+                performSearch(selectedCity!!)
+            }
+        }
+    }
 
     private var searchHandler = Handler()
     private var searchRunnable: Runnable? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val chosecity=view.findViewById<Button>(R.id.city)
+
+        chosecity.setOnClickListener{
+            showCityPicker()
+        }
 
         val searchEditText = view.findViewById<EditText>(R.id.searchEditText)
         searchEditText.addTextChangedListener(object : TextWatcher {
@@ -222,11 +243,12 @@ class HomeFragment: Fragment() {
 
         listOfHouses { houses ->
             requireActivity().runOnUiThread {
-                val frogoRv = view.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
-                frogoRv.adapter = HouseAdapter(houses)
+                if (isAdded) {
+                    val frogoRv = view?.findViewById<com.frogobox.recycler.widget.FrogoRecyclerView>(R.id.house_rv)
+                    frogoRv?.adapter = HouseAdapter(houses)
+                }
 
             }
         }
-
     }
 }

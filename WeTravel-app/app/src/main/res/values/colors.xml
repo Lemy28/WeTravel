@@ -2,17 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
     <color name="transparent">#00FFFFFF</color>
     <color name="red">#ff6f5b</color>
+    <color name="status_bar_color">#8BC34A</color>
 
 
-    <color name="transparent">#00FFFFFF</color>
 
 
 
     <color name="frogoColorPrimary">#8BC34A</color>
-    <color name="frogoColorPrimaryDark">#3700B3</color>
+    <color name="frogoColorPrimaryDark">#009688</color>
     <color name="frogoColorAccent">#03DAC5</color>
     <!--  Frogo Base Color -->
     <color name="frogoColorWhite">#FFFFFF</color>
@@ -34,6 +33,7 @@
     <color name="frogoColorDarkYellow">#FFC107</color>
     <color name="frogoColorAmber">#FF9800</color>
     <color name="frogoColorOrange">#FF5722</color>
+
 
 
 </resources>

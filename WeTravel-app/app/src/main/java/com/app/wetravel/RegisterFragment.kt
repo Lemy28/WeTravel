@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.app.wetravel.databinding.SignupBinding
 
+
 class RegisterFragment:Fragment() {
     private var _binding: SignupBinding?=null
     private val binding get()=_binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -23,6 +25,7 @@ class RegisterFragment:Fragment() {
         binding.textView10.setOnClickListener(){
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
+
         return view
     }
     private fun replaceFragment(fragment:Fragment){

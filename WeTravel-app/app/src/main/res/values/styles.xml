@@ -5,9 +5,14 @@
     <!-- styles.xml -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@color/status_bar_color</item>
         <item name="colorPrimary">@color/frogoColorPrimary</item>
         <item name="colorPrimaryDark">@color/frogoColorPrimaryDark</item>
         <item name="colorAccent">@color/frogoColorAccent</item>
+    </style>
+    <style name="AppTheme.TransparentStatusBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -17,6 +22,15 @@
         <item name="titleTextColor">@android:color/white</item>
         <item name="subtitleTextColor">@android:color/white</item>
         <item name="android:elevation">4dp</item>
+    </style>
+
+    <style name="MyButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@color/frogoColorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!-- 添加其他按钮属性 -->
     </style>
 
 
@@ -57,7 +71,7 @@
 
     <style name="frogoTvListTitle" parent="frogoBaseAreaWrapContent">
         <item name="android:maxLines">1</item>
-        <item name="android:textColor">@color/frogoColorPrimaryDark</item>
+        <item name="android:textColor">@color/frogoColorPrimary</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/frogo_dimen_font_16sp</item>
     </style>
