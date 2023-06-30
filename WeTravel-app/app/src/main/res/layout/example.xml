@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView17"
         app:layout_constraintTop_toTopOf="@+id/imageView17"
         app:layout_constraintVertical_bias="0.625"
-        app:srcCompat="@drawable/line" />
+        app:srcCompat="@drawable/img1" />
 
     <ImageView
         android:id="@+id/imageView16"
@@ -55,5 +55,5 @@
         app:layout_constraintStart_toStartOf="@+id/imageView16"
         app:layout_constraintTop_toTopOf="@+id/imageView16"
         app:layout_constraintVertical_bias="0.625"
-        app:srcCompat="@drawable/line" />
+        app:srcCompat="@drawable/img1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

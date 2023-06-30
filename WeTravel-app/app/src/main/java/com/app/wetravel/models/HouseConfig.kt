@@ -17,7 +17,19 @@ class HouseConfig(
         }
     }
     override fun toString(): String {
-        return "$detail \n " +
-                "厨房:$kitchen\n 浴室:$bathroom\n 卧室:$bedroom\n 家具:$parlour"
+        return "$detail"
+
+    }
+    fun toStringbig():String{
+        return " 房间大小:$kitchen"
+    }
+    fun toStringwashroom():String{
+        return "浴室:$bathroom"
+    }
+    fun toStringbedroom():String{
+        return "卧室:$bedroom"
+    }
+    fun toStringfurniture():String{
+        return "家具:$parlour"
     }
 }

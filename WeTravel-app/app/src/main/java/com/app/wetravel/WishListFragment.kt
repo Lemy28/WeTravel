@@ -20,10 +20,7 @@ import okhttp3.*
 import java.io.IOException
 
 
-
     val userid = "22"
-
-
 
 class WishListFragment: Fragment(){
     override fun onCreateView(

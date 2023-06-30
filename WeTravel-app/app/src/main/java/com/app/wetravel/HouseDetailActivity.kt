@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.app.wetravel.models.House
 import com.app.wetravel.models.HouseConfig
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -41,19 +42,17 @@ class HouseDetailActivity : AppCompatActivity() {
     private val userId = "22"
 
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_house_detail)
         // 获取传递的数据
         val houseDataString = intent.getStringExtra("HOUSE_DATA")
 
+
         // 如果你将房屋数据转换为 Gson 格式的字符串传递过来，则可以使用 Gson 来解析数据
         val gson = Gson()
         val clickedHouse = gson.fromJson(houseDataString, House::class.java)
-
+        fetchData(userId,clickedHouse.roomId)
 
 
         // 初始化视图组件
@@ -66,8 +65,10 @@ class HouseDetailActivity : AppCompatActivity() {
         val mapbutton = findViewById<ImageView>(R.id.locateButton)
         val bottomTextView = findViewById<TextView>(R.id.bottomTextView)
         val collationbutton = findViewById<ImageView>(R.id.collectionButton)
-
-
+        val bigTextView = findViewById<TextView>(R.id.bigTextView)
+        val washTextView = findViewById<TextView>(R.id.washTextView)
+        val bedTextView = findViewById<TextView>(R.id.bedTextView)
+        val furniturnTextView = findViewById<TextView>(R.id.furniturnTextView)
 
         val payButton = findViewById<Button>(R.id.payButton)
 
@@ -90,6 +91,11 @@ class HouseDetailActivity : AppCompatActivity() {
                 if (houseConfig != null) {
                     runOnUiThread {
                         bottomTextView.text = houseConfig.toString()
+                        bigTextView.text= houseConfig.toStringbig()
+                        washTextView.text= houseConfig.toStringwashroom()
+                        bedTextView.text= houseConfig.toStringbedroom()
+                        furniturnTextView.text= houseConfig.toStringfurniture()
+
                     }
                 } else {
                     bottomTextView.text = "Unknow"
@@ -118,7 +124,7 @@ class HouseDetailActivity : AppCompatActivity() {
         }
 
 
-        // 添加按钮点击监听器
+        // 收藏
         collationbutton.setOnClickListener {
             GlobalScope.launch(Dispatchers.IO) {
                 // 在后台线程中执行网络请求
@@ -232,7 +238,48 @@ class HouseDetailActivity : AppCompatActivity() {
         }
     }
 
+    private fun fetchData(userid: String,roomId: String) {
+        val client = OkHttpClient()
+        val collationbutton = findViewById<ImageView>(R.id.collectionButton)
+        val url = HttpUrl.Builder()
+            .scheme("http")
+            .host("39.107.60.28")
+            .port(8014)
+            .addPathSegment("checkCollection")
+            .addQueryParameter("userId", userid)
+            .addQueryParameter("roomId", roomId)
+            .build()
 
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: java.io.IOException) {
+                // 处理请求失败情况
+                e.printStackTrace()
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    collationbutton.setImageResource(R.drawable.collectionbutton)
+                } else {
+                    collationbutton.setImageResource(R.drawable.collectionbutton2)
+                }
+            }
+        })
+    }
+
+    fun parseJson(json: String?): List<House> {
+        // 创建一个Gson实例
+        val gson = Gson()
+
+        // 创建一个泛型类型
+        val type = object : TypeToken<List<House>>() {}.type
+
+        // 直接将JSON字符串转换为List<House>类型
+        return gson.fromJson(json, type)
+    }
 
 
     private fun submitBillToBackend(userId: String, roomId: String,rentCount: String,housePrice:String) {
@@ -275,7 +322,7 @@ class HouseDetailActivity : AppCompatActivity() {
                         } else {
                             // 请求成功但后台返回了错误的响应
                             runOnUiThread {
-                                Toast.makeText(this@HouseDetailActivity, "数据提交失败，请重试", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@HouseDetailActivity, "已经被预定了", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
