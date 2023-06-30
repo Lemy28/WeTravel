@@ -1,10 +1,3 @@
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-}
-
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
@@ -13,18 +6,12 @@ plugins {
 android {
     namespace 'com.app.wetravel'
     compileSdk 33
-
-
-    sourceSets {
-        main{
-            jniLibs.srcDirs = ['libs']
-        }
-    }
-
     buildFeatures {
         viewBinding = true
     }
-
+    dataBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId "com.app.wetravel"
         minSdk 24
@@ -33,22 +20,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        ndk {
-            //选择要添加的对应 cpu 类型的 .so 库。
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
-            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
-        }
-
-        manifestPlaceholders = [
-                JPUSH_PKGNAME : 'com.app.wetravel',
-                JPUSH_APPKEY : "aa772eab7cfe5dee4cb72023", //JPush 上注册的包名对应的 Appkey.
-                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
-        ]
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
     }
 
     buildTypes {
@@ -67,38 +38,17 @@ android {
 }
 
 dependencies {
-
-    //推送
-    implementation 'cn.jiguang.sdk:jpush:5.0.3'
-    implementation 'cn.jiguang.sdk:joperate:2.0.2'
-
- 
-
-
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.10'
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
     implementation 'com.squareup.okio:okio:3.2.0'
-    implementation 'com.google.code.gson:gson:2.10.1'
-
-
-
-
-   
-    implementation 'androidx.navigation:navigation-ui:2.4.0'
-    implementation 'com.squareup.picasso:picasso:2.8'
-    implementation 'com.github.frogobox:frogo-ui:1.1.8'
-    implementation 'com.github.amirisback:frogo-recycler-view:4.3.3'
-    implementation 'com.github.frogobox.frogo-ui:core-ui:1.1.8'
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'androidx.databinding:library:3.2.0-alpha11'
-    implementation files('libs\\AMap3DMap_9.7.0_AMapSearch_9.7.0_AMapLocation_6.3.0_20230526.jar')
-    implementation files('libs\\AMap3DMap_9.7.0_AMapSearch_9.7.0_AMapLocation_6.3.0_20230526.jar')
-
+    implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.8.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
 }

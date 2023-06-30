@@ -23,12 +23,10 @@ class BottomFragment :Fragment(){
         _binding = BottomFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.button.setOnClickListener(){
-
             replaceFragment(HomeFragment())
             binding.button.setImageResource(R.drawable.home_selected)
             binding.button2.setImageResource(R.drawable.wishlist);
             binding.button3.setImageResource(R.drawable.person);
-
         }
         binding.button2.setOnClickListener(){
             replaceFragment(WishListFragment())
@@ -47,7 +45,7 @@ class BottomFragment :Fragment(){
     private fun replaceFragment(fragment:Fragment){
         val fragmentManager=activity?.supportFragmentManager!!
         val transaction=fragmentManager.beginTransaction()
-        transaction.replace(R.id.content,fragment)
+        transaction.replace(R.id.contentfragment,fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }

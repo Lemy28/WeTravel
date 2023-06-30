@@ -7,9 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.app.wetravel.databinding.SignupBinding
 
-class RegisterFragment:Fragment() {
+class RegisterFragment:Fragment(),OkHttpSignup.OkHttpCallback {
     private var _binding: SignupBinding?=null
     private val binding get()=_binding!!
+    override fun onSuccess(result: String) {
+        requireActivity().onBackPressedDispatcher.onBackPressed()
+        // 处理请求成功的逻辑
+    }
+
+    override fun onFailure(error: String) {
+        val dialog = ErrorBottomSheetDialog.newInstance()
+        dialog.show(childFragmentManager, "ErrorDialog")
+        // 处理请求失败的逻辑
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -22,6 +32,20 @@ class RegisterFragment:Fragment() {
         }
         binding.textView10.setOnClickListener(){
             requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+        binding.button4.setOnClickListener() {
+            val username = binding.editTextUsername.text.toString()
+            val password = binding.editTextPassword.text.toString()
+            val confirmpassword=binding.editTextPassword2.text.toString()
+            if(password==confirmpassword){
+                val okHttpSignup = OkHttpSignup(username, password)
+                okHttpSignup.setCallback(this)
+                okHttpSignup.execute()
+            }
+            else
+            {
+                //TODO 提示前后输入的密码不一致，请重新输入。
+            }
         }
         return view
     }

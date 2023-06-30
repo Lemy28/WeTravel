@@ -35,5 +35,4 @@
         app:layout_constraintTop_toTopOf="@+id/imageView"
         app:srcCompat="@drawable/rectangle3" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

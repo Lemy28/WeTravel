@@ -9,7 +9,7 @@
             android:id="@+id/imagerectangle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="48dp"
             android:scaleType="centerCrop"
             android:src="@drawable/rectangle_order"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,11 +40,12 @@
             app:layout_constraintTop_toTopOf="@+id/imagerectangle"
             app:layout_constraintVertical_bias="0.625" />
 
-        <EditText
+        <TextView
             android:id="@+id/editTextDate2"
-            android:layout_width="112dp"
+            android:layout_width="166dp"
             android:layout_height="42dp"
             android:layout_marginStart="48dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="date"
             app:layout_constraintStart_toStartOf="@+id/imagerectangle"
@@ -63,10 +64,65 @@
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
+            android:layout_marginBottom="16dp"
+            android:text="预定序列码"
+            app:layout_constraintBottom_toTopOf="@+id/textView21"
+            app:layout_constraintStart_toStartOf="@+id/textView21" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="143dp"
+            android:layout_height="43dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="64dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/liner"
+            app:layout_constraintEnd_toEndOf="@+id/liner" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="145dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/imageView" />
+            app:layout_constraintBottom_toTopOf="@+id/liner"
+            app:layout_constraintEnd_toEndOf="@+id/liner" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="4dp"
+            android:text="已完成"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextDate2"
+            app:layout_constraintEnd_toEndOf="@+id/imagerectangle" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="到期时间"
+            app:layout_constraintStart_toStartOf="@+id/editTextDate2"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDate2" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="62dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ABC123"
+            app:layout_constraintBottom_toBottomOf="@+id/textView23"
+            app:layout_constraintEnd_toEndOf="@+id/textView21" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
