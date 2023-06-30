@@ -2,15 +2,11 @@ package com.app.wetravel
 
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-
-
-
 import android.util.Log
-
-
-
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -33,6 +29,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import okio.IOException
+import java.util.Calendar
 
 
 class HouseDetailActivity : AppCompatActivity() {
@@ -41,6 +38,7 @@ class HouseDetailActivity : AppCompatActivity() {
     private val client = OkHttpClient()
     private val userId = "22"
 
+    private var selectedStartDate: String? = null
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,6 +70,8 @@ class HouseDetailActivity : AppCompatActivity() {
         val furniturnTextView = findViewById<TextView>(R.id.furniturnTextView)
         val back = findViewById<ImageView>(R.id.backtohome)
         val payButton = findViewById<Button>(R.id.payButton)
+        val chosedata = findViewById<Button>(R.id.chosedate)
+
 
 
         if (rentCountTextView != null) {
@@ -169,7 +169,7 @@ class HouseDetailActivity : AppCompatActivity() {
                 val roomId = clickedHouse.roomId
 
                 // 执行网络请求或调用后台API提交数据
-                submitBillToBackend(userId, roomId, rentCount.toString(),clickedHouse.price.toString())
+                submitBillToBackend(userId, roomId, rentCount.toString(),clickedHouse.price.toString(),chosedata.text)
         }
 
         back.setOnClickListener{
@@ -185,7 +185,39 @@ class HouseDetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //日期选择
+        chosedata.setOnClickListener(View.OnClickListener {
+            showDatePickerDialog(chosedata);
+        })
+
     }
+
+
+
+    //选择日期
+    private fun showDatePickerDialog(selectedDateTextView: Button) {
+        val calendar = Calendar.getInstance()
+        val year: Int = calendar.get(Calendar.YEAR)
+        val month: Int = calendar.get(Calendar.MONTH)
+        val day: Int = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(this,
+            { view, year, monthOfYear, dayOfMonth -> // 处理选中的日期
+                var selectedDate =
+                    String.format("%04d-%02d-%02d", year, monthOfYear + 1, dayOfMonth)
+                selectedDateTextView.text = selectedDate
+                showToast("选择的日期是：" + selectedDate);
+            }, year, month, day
+        ) // 设置初始日期（2023年1月1日）
+
+        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
+
+        datePickerDialog.show()
+    }
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
     private fun getDetail(roomId: String, callback: (HouseConfig?) -> Unit) {
         val urlBuilder = (Configs.prefix + "selectConfiguration").toHttpUrlOrNull()?.newBuilder()
         urlBuilder?.addQueryParameter("roomId", roomId)
@@ -240,6 +272,9 @@ class HouseDetailActivity : AppCompatActivity() {
         }
     }
 
+
+
+
     private fun fetchData(userid: String,roomId: String) {
         val client = OkHttpClient()
         val collationbutton = findViewById<ImageView>(R.id.collectionButton)
@@ -284,12 +319,20 @@ class HouseDetailActivity : AppCompatActivity() {
     }
 
 
-    private fun submitBillToBackend(userId: String, roomId: String,rentCount: String,housePrice:String) {
+    private fun submitBillToBackend(
+        userId: String, roomId: String,
+        rentCount: String,
+        housePrice:String,
+        time: CharSequence
+    ) {
+
+
             // 构建请求的 URL
             val urlBuilder = (Configs.prefix + "addOrder").toHttpUrlOrNull()?.newBuilder()
             urlBuilder?.addQueryParameter("userId", userId)
             urlBuilder?.addQueryParameter("roomId", roomId)
             urlBuilder?.addQueryParameter("day",rentCount )
+            urlBuilder?.addQueryParameter("time", time.toString())
             val totalPrice = rentCount.toFloat() * housePrice.toFloat()
             urlBuilder?.addQueryParameter("totalPrice",totalPrice.toString())
             val url = urlBuilder?.build()

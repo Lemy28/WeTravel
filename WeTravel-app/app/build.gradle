@@ -2,6 +2,7 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -73,7 +74,8 @@ dependencies {
     implementation 'cn.jiguang.sdk:jpush:5.0.3'
     implementation 'cn.jiguang.sdk:joperate:2.0.2'
 
- 
+
+
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -82,10 +84,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
 
 
-
-
-
-  
     implementation 'androidx.navigation:navigation-ui:2.4.0'
     implementation 'com.squareup.picasso:picasso:2.8'
     implementation 'com.github.frogobox:frogo-ui:1.1.8'

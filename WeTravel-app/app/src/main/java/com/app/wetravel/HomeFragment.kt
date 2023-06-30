@@ -1,5 +1,6 @@
 package com.app.wetravel
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -8,12 +9,12 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-
-
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.wetravel.models.House
 import com.google.gson.Gson
@@ -178,13 +179,35 @@ class HomeFragment: Fragment() {
     return inflater.inflate(R.layout.home_content, container, false)
 
 }
-
-
+    private var selectedCity: String? = null
+    fun showCityPicker() {
+        val dialogFragment = CityPickerDialogFragment()
+        dialogFragment.setOnCitySelectedListener { city ->
+            selectedCity = city
+            updateButtonLabel()
+        }
+        val fragmentManager: FragmentManager = childFragmentManager
+        dialogFragment.show(fragmentManager, "CityPickerDialog")
+    }
+    private fun updateButtonLabel() {
+        val btnShowPicker = view?.findViewById<Button>(R.id.city)
+        if (selectedCity != null) {
+            if (btnShowPicker != null) {
+                btnShowPicker.setText(selectedCity)
+                performSearch(selectedCity!!)
+            }
+        }
+    }
 
     private var searchHandler = Handler()
     private var searchRunnable: Runnable? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val chosecity=view.findViewById<Button>(R.id.city)
+
+        chosecity.setOnClickListener{
+            showCityPicker()
+        }
 
         val searchEditText = view.findViewById<EditText>(R.id.searchEditText)
         searchEditText.addTextChangedListener(object : TextWatcher {
