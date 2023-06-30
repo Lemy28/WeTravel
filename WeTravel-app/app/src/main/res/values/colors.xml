@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="red">#ff6f5b</color>
+    <color name="status_bar_color">#8BC34A</color>
 
 
 

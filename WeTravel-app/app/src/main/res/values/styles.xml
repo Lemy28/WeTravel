@@ -5,6 +5,7 @@
     <!-- styles.xml -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@color/status_bar_color</item>
         <item name="colorPrimary">@color/frogoColorPrimary</item>
         <item name="colorPrimaryDark">@color/frogoColorPrimaryDark</item>
         <item name="colorAccent">@color/frogoColorAccent</item>

@@ -105,8 +105,7 @@ class WishListFragment: Fragment(){
                     ) {
                         // 在这里绑定数据和视图
                         view.findViewById<TextView>(R.id.tv_wish_name).text = data.roomName // 设置民宿名称
-                        view.findViewById<TextView>(R.id.tv_wish_address).text =
-                            data.location // 设置民宿地址
+                        view.findViewById<TextView>(R.id.tv_wish_address).text = data.location // 设置民宿地址
                         val prefix = "http://39.107.60.28:8014"
 
                         Picasso.get().load(  prefix + data.imageUrl)

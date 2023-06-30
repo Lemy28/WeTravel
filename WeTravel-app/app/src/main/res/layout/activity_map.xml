@@ -6,14 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MapActivity">
 
+
+
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/goback"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="16dp"
+            android:radius="40dp"
+            android:src="@drawable/goback"
+            />
 
         <com.amap.api.maps.MapView
             android:id="@+id/map_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+        </com.amap.api.maps.MapView>
 
         <Button
             android:id="@+id/navibutton"
@@ -22,8 +34,8 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="16dp"
-            tools:ignore="MissingConstraints"
-            android:text="开始导航"/>
+            android:text="开始导航"
+            tools:ignore="MissingConstraints" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

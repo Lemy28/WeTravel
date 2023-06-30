@@ -1,7 +1,5 @@
 package com.app.wetravel;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,8 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
@@ -20,7 +16,6 @@ import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.MapsInitializer;
-import com.amap.api.maps.UiSettings;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
@@ -68,6 +63,7 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         View button = findViewById(R.id.navibutton);
+        View goback = findViewById(R.id.goback);
 
         Intent intent = getIntent();
 
@@ -79,6 +75,7 @@ public class MapActivity extends AppCompatActivity {
         ServiceSettings.updatePrivacyAgree(this, true);
 
         mapView = findViewById(R.id.map_view);
+
         mapView.onCreate(savedInstanceState);
         AMap aMap = null;
         if (aMap == null) {
@@ -108,6 +105,8 @@ public class MapActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+
+
                 }
             });
         } catch (AMapException e) {
@@ -121,8 +120,18 @@ public class MapActivity extends AppCompatActivity {
         aMap.getUiSettings().setMyLocationButtonEnabled(true);
         aMap.setMyLocationEnabled(true);
 
+        goback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
 
     }
+
+
 
     @Override
     protected void onDestroy () {

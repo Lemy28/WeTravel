@@ -28,7 +28,7 @@
             android:id="@+id/searchEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Search"
+            android:hint="在此搜索民宿"
             android:inputType="text"
             app:layout_constraintTop_toBottomOf="@id/appBarLayout"
             app:layout_constraintStart_toStartOf="parent"

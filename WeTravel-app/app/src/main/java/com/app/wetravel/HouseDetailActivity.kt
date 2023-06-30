@@ -43,6 +43,7 @@ class HouseDetailActivity : AppCompatActivity() {
 
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_house_detail)
@@ -62,7 +63,7 @@ class HouseDetailActivity : AppCompatActivity() {
         val titleTextView = findViewById<TextView>(R.id.titleTextview) as? TextView
         val descriptionTextView = findViewById<TextView>(R.id.descriptionTextView) as? TextView
         val imageView = findViewById<ImageView>(R.id.imageView)
-        val mapbutton = findViewById<Button>(R.id.locateButton)
+        val mapbutton = findViewById<ImageView>(R.id.locateButton)
         val bottomTextView = findViewById<TextView>(R.id.bottomTextView)
         val collationbutton = findViewById<ImageView>(R.id.collectionButton)
 
@@ -135,11 +136,13 @@ class HouseDetailActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             // 收藏成功
                             // 在这里可以更新 UI 或执行其他逻辑操作
+                            collationbutton.setImageResource(R.drawable.collectionbutton)
                             Toast.makeText(this@HouseDetailActivity, "收藏成功", Toast.LENGTH_SHORT).show()
                         } else {
                             // 收藏失败
                             // 在这里可以处理失败情况，例如显示错误信息等
-                            Toast.makeText(this@HouseDetailActivity, "已经收藏过了", Toast.LENGTH_SHORT).show()
+                            collationbutton.setImageResource(R.drawable.collectionbutton2)
+                            Toast.makeText(this@HouseDetailActivity, "已经取消收藏", Toast.LENGTH_SHORT).show()
                         }
                     }
                 } catch (e: Exception) {
@@ -169,6 +172,7 @@ class HouseDetailActivity : AppCompatActivity() {
         //地图
         mapbutton.setOnClickListener {
             val intent = Intent(this, MapActivity::class.java)
+            intent.putExtra("HOUSE_DATA",intent.getStringExtra("HOUSE_DATA"))
             intent.putExtra("key", clickedHouse.roomName.toString())
             startActivity(intent)
         }
@@ -248,9 +252,6 @@ class HouseDetailActivity : AppCompatActivity() {
                     .url(it)
                     .build()
             }
-
-
-
 
             // 发起异步请求
             if (request != null) {

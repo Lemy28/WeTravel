@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
+
 import androidx.recyclerview.widget.RecyclerView
 import com.app.wetravel.models.House
 import com.google.gson.Gson
@@ -98,7 +99,7 @@ class HomeFragment: Fragment() {
             fun bind(house: House) {
                 houseNameTextView.text = house.roomName
                 houseAddressTextView.text = house.location
-                housePriceTextView.text = "$${house.price}"
+                housePriceTextView.text = "${house.price}元"
 
 
                 Picasso.get().load(Configs.prefix + house.imageUrl).into(houseImageView)
@@ -114,6 +115,8 @@ class HomeFragment: Fragment() {
 
                         // 启动新的 Activity
                         itemView.context.startActivity(intent)
+
+
                     }
                 }
 
@@ -173,6 +176,7 @@ class HomeFragment: Fragment() {
     savedInstanceState: Bundle?
 ): View? {
     return inflater.inflate(R.layout.home_content, container, false)
+
 }
 
 

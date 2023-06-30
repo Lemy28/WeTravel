@@ -62,7 +62,6 @@
             android:name="com.amap.api.v2.apikey"
             android:value="5ed9394bb02221630a3935f151e455d8" />
 
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -74,14 +73,7 @@
         </activity>
         <activity
             android:name=".HouseDetailActivity"
-            android:exported="true">
-
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="true">000000000
         </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
