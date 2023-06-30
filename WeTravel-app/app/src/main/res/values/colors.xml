@@ -3,14 +3,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
-    <color name="red">#ff6f5b</color>
-    <color name="status_bar_color">#8BC34A</color>
+    <color name="red">#ff6f5b</color>8BC34A
+    <color name="status_bar_color">#496B5C</color>
 
 
 
 
 
-    <color name="frogoColorPrimary">#8BC34A</color>
+        <color name="custom_button_color">#F1F1F1</color>
+
+    <color name="frogoColorPrimary">#496B5c</color>
     <color name="frogoColorPrimaryDark">#009688</color>
     <color name="frogoColorAccent">#03DAC5</color>
     <!--  Frogo Base Color -->

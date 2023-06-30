@@ -48,6 +48,7 @@ class PersonalFragment:Fragment() {
         }
         if(UserManager.isLoggedIn){
             val phonenumber=UserManager.getUser()?.phoneNumber
+            binding.textView13.text="13874900339@qq.com"
             if(phonenumber!=null) {
                 fetchDataFromServer(phonenumber)
             }

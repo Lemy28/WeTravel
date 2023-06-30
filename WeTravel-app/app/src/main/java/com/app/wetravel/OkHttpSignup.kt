@@ -51,6 +51,7 @@ class OkHttpSignup(private val phoneNumber: String, private val password: String
             // 在这里处理从服务器返回的字符串
             Log.d(TAG, "Server response: $result")
             if (result == "success") {
+                callback?.onSuccess(result)
                 // 注册成功
             } else {
                 // 注册失败
@@ -60,5 +61,6 @@ class OkHttpSignup(private val phoneNumber: String, private val password: String
             Log.e(TAG, "Server request failed")
         }
     }
+
 }
 
