@@ -13,6 +13,9 @@ public class TravelApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        JPushInterface.setDebugMode(true);
+        // 初始化 JPush
+        JPushInterface.init(this);
 
         Context context = this;
         //定位隐私政策同意
