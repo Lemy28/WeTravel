@@ -63,7 +63,7 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         View button = findViewById(R.id.navibutton);
-        View goback = findViewById(R.id.goback);
+        View goback = findViewById(R.id.backtohome);
 
         Intent intent = getIntent();
 
@@ -123,6 +123,8 @@ public class MapActivity extends AppCompatActivity {
         goback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mapView.onPause();
+
                 finish();
             }
         });

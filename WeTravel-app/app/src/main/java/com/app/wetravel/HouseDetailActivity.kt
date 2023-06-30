@@ -1,6 +1,7 @@
 package com.app.wetravel
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 
@@ -11,7 +12,6 @@ import android.util.Log
 
 
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -42,6 +42,7 @@ class HouseDetailActivity : AppCompatActivity() {
     private val userId = "22"
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_house_detail)
@@ -69,7 +70,7 @@ class HouseDetailActivity : AppCompatActivity() {
         val washTextView = findViewById<TextView>(R.id.washTextView)
         val bedTextView = findViewById<TextView>(R.id.bedTextView)
         val furniturnTextView = findViewById<TextView>(R.id.furniturnTextView)
-
+        val back = findViewById<ImageView>(R.id.backtohome)
         val payButton = findViewById<Button>(R.id.payButton)
 
 
@@ -77,7 +78,7 @@ class HouseDetailActivity : AppCompatActivity() {
             rentCountTextView.text = rentCount.toString()
         }
         if (priceTextView != null) {
-            priceTextView.text = clickedHouse.price.toString()+"/天"
+            priceTextView.text = "¥"+clickedHouse.price.toString()+"/天"
         }
         if (titleTextView != null) {
             titleTextView.text = clickedHouse.roomName
@@ -169,9 +170,10 @@ class HouseDetailActivity : AppCompatActivity() {
 
                 // 执行网络请求或调用后台API提交数据
                 submitBillToBackend(userId, roomId, rentCount.toString(),clickedHouse.price.toString())
+        }
 
-
-
+        back.setOnClickListener{
+            finish()
         }
 
 
