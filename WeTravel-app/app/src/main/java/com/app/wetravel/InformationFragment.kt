@@ -1,18 +1,11 @@
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.app.wetravel.OkHttpLogin
-import com.app.wetravel.PersonalFragment
 import com.app.wetravel.R
-import com.app.wetravel.User
 import com.app.wetravel.databinding.PersonalinformationBinding
-import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
-import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.FormBody
@@ -22,6 +15,10 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.Response
 import okio.IOException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
 
 class InformationFragment: Fragment() {
     private var _binding: PersonalinformationBinding?=null

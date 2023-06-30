@@ -98,12 +98,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
-    <TextView
+    <EditText
         android:id="@+id/gender_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:visibility="visible"
+        android:paddingStart="8dp"
         android:ems="10"
         android:cursorVisible="false"
         android:focusableInTouchMode="false"
@@ -121,13 +122,15 @@
         app:layout_constraintStart_toStartOf="@+id/editTextUsername_edit"
         app:layout_constraintTop_toBottomOf="@+id/editTextUsername_edit" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTextUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
+        android:paddingStart="8dp"
+
         android:background="@drawable/rectangle_password"
-        android:paddingTop="20dp"
+
         android:textSize="19sp"
         android:visibility="visible"
         android:cursorVisible="false"
@@ -199,13 +202,14 @@
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:cursorVisible="false"
         android:visibility="visible"
+        android:paddingStart="8dp"
         android:focusableInTouchMode="false"
         android:background="@drawable/rectangle_password"
         android:ems="10"
@@ -227,12 +231,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone_edit" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:cursorVisible="false"
+        android:paddingStart="8dp"
         android:visibility="visible"
         android:focusableInTouchMode="false"
         android:background="@drawable/rectangle_password"
@@ -252,13 +257,14 @@
         app:layout_constraintStart_toStartOf="@+id/gender_spinner_edit"
         app:layout_constraintTop_toBottomOf="@+id/gender_spinner_edit" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:background="@drawable/rectangle_password"
         android:cursorVisible="false"
+        android:paddingStart="8dp"
         android:ems="10"
         android:focusableInTouchMode="false"
         android:inputType="date"
@@ -278,7 +284,7 @@
         app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress_edit"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress_edit" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTextTextPostalAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -287,6 +293,7 @@
         android:cursorVisible="false"
         android:ems="10"
         android:focusableInTouchMode="false"
+        android:paddingStart="8dp"
         android:inputType="textPostalAddress"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/editTextDate"
