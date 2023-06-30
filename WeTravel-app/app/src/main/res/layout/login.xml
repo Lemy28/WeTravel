@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rectangle_person" />
 
-    <ImageView
+    36<ImageView
         android:id="@+id/imageView3"
         android:layout_width="539dp"
         android:layout_height="243dp"

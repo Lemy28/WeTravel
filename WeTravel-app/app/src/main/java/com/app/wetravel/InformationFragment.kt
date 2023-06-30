@@ -35,7 +35,6 @@ class InformationFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding= PersonalinformationBinding.inflate(inflater,container,false)
         val view = binding.root
         binding.imageButton16.setOnClickListener(){

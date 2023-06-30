@@ -64,6 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
+
     <ImageButton
         android:id="@+id/imageButton9"
         android:layout_width="wrap_content"
@@ -126,6 +127,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUsername" />
 
+
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
@@ -135,6 +137,7 @@
         app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
         app:layout_constraintStart_toStartOf="@+id/editTextPassword" />
 
+
     <TextView
         android:id="@+id/textView8"
         android:layout_width="105dp"
@@ -143,6 +146,7 @@
         android:text="PhoneNumber"
         app:layout_constraintBottom_toTopOf="@+id/editTextUsername"
         app:layout_constraintStart_toStartOf="@+id/editTextUsername" />
+
 
     <ImageView
         android:id="@+id/imageView8"
@@ -187,5 +191,6 @@
         android:text="Confirm Password"
         app:layout_constraintBottom_toTopOf="@+id/editTextPassword2"
         app:layout_constraintStart_toStartOf="@+id/editTextPassword2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

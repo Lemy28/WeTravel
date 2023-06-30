@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,11 +7,9 @@
     android:layout_height="match_parent"
     android:overScrollMode="never"
     android:scrollbars="vertical">
-
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView"
@@ -37,7 +34,7 @@
         android:background="@color/transparent"
         android:elevation="3dp"
         android:gravity="center"
-        android:text="编辑"
+        android:text="保存"
         android:textColor="#eea04e"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
@@ -91,122 +88,83 @@
         android:id="@+id/textView8"
         android:layout_width="65dp"
         android:layout_height="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:text="用户名"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextUsername"
+        app:layout_constraintStart_toStartOf="@+id/editTextUsername" />
 
-    <TextView
+
+    <Spinner
         android:id="@+id/gender_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:visibility="visible"
-        android:ems="10"
-        android:cursorVisible="false"
-        android:focusableInTouchMode="false"
-        android:inputType="text"
+        android:layout_marginTop="36dp"
         android:background="@drawable/rectangle_password"
         app:layout_constraintStart_toStartOf="@+id/editTextUsername"
         app:layout_constraintTop_toBottomOf="@+id/editTextUsername" />
-    <Spinner
-        android:id="@+id/gender_spinner_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:visibility="gone"
-        android:background="@drawable/rectangle_password"
-        app:layout_constraintStart_toStartOf="@+id/editTextUsername_edit"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUsername_edit" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTextUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:background="@drawable/rectangle_password"
-        android:paddingTop="20dp"
-        android:textSize="19sp"
-        android:visibility="visible"
-        android:cursorVisible="false"
-        android:focusableInTouchMode="false"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
-    <EditText
-        android:id="@+id/editTextUsername_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="@drawable/rectangle_password"
         android:ems="10"
         android:inputType="text"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView15" />
-
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="65dp"
         android:layout_height="20dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginBottom="8dp"
         android:text="性别"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintBottom_toTopOf="@+id/gender_spinner"
+        app:layout_constraintStart_toStartOf="@+id/gender_spinner" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="65dp"
         android:layout_height="20dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginBottom="8dp"
         android:text="电话号码"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+        app:layout_constraintStart_toStartOf="@+id/editTextPhone" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="65dp"
         android:layout_height="20dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginBottom="8dp"
         android:text="邮箱"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="65dp"
         android:layout_height="20dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginBottom="8dp"
         android:text="生日"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextDate"
+        app:layout_constraintStart_toStartOf="@+id/editTextDate" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="65dp"
         android:layout_height="20dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginBottom="8dp"
         android:text="地址"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPostalAddress"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPostalAddress" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:cursorVisible="false"
-        android:visibility="visible"
-        android:focusableInTouchMode="false"
+        android:layout_marginTop="36dp"
         android:background="@drawable/rectangle_password"
         android:ems="10"
         android:inputType="textEmailAddress"
@@ -214,97 +172,38 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="@drawable/rectangle_password"
-        android:ems="10"
-        android:focusableInTouchMode="false"
-        android:inputType="textEmailAddress"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone_edit" />
-
-    <TextView
         android:id="@+id/editTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:cursorVisible="false"
-        android:visibility="visible"
-        android:focusableInTouchMode="false"
+        android:layout_marginTop="36dp"
         android:background="@drawable/rectangle_password"
         android:ems="10"
         android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/gender_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gender_spinner" />
-    <EditText
-        android:id="@+id/editTextPhone_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="@drawable/rectangle_password"
-        android:ems="10"
-        android:inputType="phone"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@+id/gender_spinner_edit"
-        app:layout_constraintTop_toBottomOf="@+id/gender_spinner_edit" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/rectangle_password"
-        android:cursorVisible="false"
         android:ems="10"
-        android:focusableInTouchMode="false"
         android:inputType="date"
-        android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
     <EditText
-        android:id="@+id/editTextDate_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="@drawable/rectangle_password"
-        android:ems="10"
-        android:inputType="date"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress_edit"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress_edit" />
-
-    <TextView
         android:id="@+id/editTextTextPostalAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/rectangle_password"
-        android:cursorVisible="false"
         android:ems="10"
-        android:focusableInTouchMode="false"
         android:inputType="textPostalAddress"
-        android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/editTextDate"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
-
-    <EditText
-        android:id="@+id/editTextTextPostalAddress_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="@drawable/rectangle_password"
-        android:ems="10"
-        android:visibility="gone"
-        android:inputType="textPostalAddress"
-        app:layout_constraintStart_toStartOf="@+id/editTextDate_edit"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate_edit" />
-
-
     <ImageButton
         android:id="@+id/imageButton16"
         android:layout_width="wrap_content"

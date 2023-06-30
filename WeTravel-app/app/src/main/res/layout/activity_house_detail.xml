@@ -1,66 +1,325 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+   >
+
+
+    <ImageView
+        android:id="@+id/backtohome"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:elevation="16dp"
+        android:radius="40dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/goback"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_width="409dp"
+        android:layout_height="209dp"
+
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
+        app:layout_constraintDimensionRatio="H,16:9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/collectionButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:elevation="16dp"
+        android:radius="40dp"
+        android:src="@drawable/collectionbutton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintVertical_bias="0.249" />
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Title"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
+    <LinearLayout
+        android:layout_width="411dp"
+        android:layout_height="494dp"
+        android:layout_marginTop="4dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            >
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/price"/>
 
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/payButton"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+            <TextView
+                android:id="@+id/priceTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Price"
+                android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/payButton"
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/titleTextview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:text="Title"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="59dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:elevation="16dp"
+            android:background="@drawable/border">
+
+            <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="5dp"
+                android:text="Description"
+                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/locateButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:elevation="16dp"
+                android:layout_marginStart="10dp"
+                android:radius="40dp"
+                android:src="@drawable/locationbutton"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地图/导航"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/descr"
+                        />
+                    <TextView
+                        android:id="@+id/bottomTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:text="底部文本"
+                        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/big"
+                        />
+                    <TextView
+                        android:id="@+id/bigTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:text="底部文本"
+                        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/soap"
+                        />
+                    <TextView
+                        android:id="@+id/washTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:text="底部文本"
+                        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/wash"
+                        />
+                    <TextView
+                        android:id="@+id/bedTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:text="底部文本"
+                        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/furniture"
+                        />
+                    <TextView
+                        android:id="@+id/furniturnTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:text="底部文本"
+                        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/rentLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="租订"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.817"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+        app:layout_constraintEnd_toEndOf="parent">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chosedate"
+            style="@style/MyButtonStyle"
+            android:text="选择入住日期"/>
 
-    <Button
-        android:id="@+id/locateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="定位"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+
+        <Button
+            android:id="@+id/decreaseButton"
+            style="@style/MyButtonStyle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/rentCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="1"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/increaseButton"
+            style="@style/MyButtonStyle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/payButton"
+            style="@style/MyButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="租订"
+
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
