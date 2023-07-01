@@ -77,6 +77,7 @@ class OrderFragment: Fragment() {
                 if (response.isSuccessful) {
                     val responseData = response.body?.string()
                     Log.d(PersonalFragment.TAG, responseData.toString())
+
                     activity?.runOnUiThread {
                         val orderList = Gson().fromJson<List<InOrders>>(
                             responseData,

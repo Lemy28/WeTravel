@@ -84,7 +84,7 @@ class PersonalFragment:Fragment() {
                 // 处理响应数据
                 if (response.isSuccessful) {
                     val responseData = response.body?.string()
-                    Log.d(PersonalFragment.TAG, "Server response:success")
+                    Log.d(PersonalFragment.TAG, responseData.toString())
 
                     activity?.runOnUiThread {
                         val type = object : TypeToken<User>() {}.type

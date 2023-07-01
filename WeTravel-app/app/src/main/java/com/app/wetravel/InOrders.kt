@@ -8,7 +8,7 @@ class InOrders {
     var phoneNumber: String? = null
     var roomName: String? = null
     var location: String? = null
-    var time: Date? = null
+    var time: String? = null
     var day: Int? = null
     var price: BigDecimal? = null
 
@@ -17,7 +17,7 @@ class InOrders {
         phoneNumber: String?,
         roomName: String?,
         location: String?,
-        time: Date?,
+        time: String?,
         day: Int?,
         price: BigDecimal?
     ) {
